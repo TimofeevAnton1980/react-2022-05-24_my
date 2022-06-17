@@ -26,11 +26,21 @@ export const selectRestaurantRating = createSelector(
   (state, restaurantId, reviewIds) => {
     const reviews = selectReviewByIds(state, reviewIds);
 
+    if (!reviews?.filter(Boolean).length) {
+      return 0;
+    }
+
     return Math.ceil(
       reviews.reduce((prev, curr) => prev + curr.rating, 0) / reviews.length
     );
   }
 );
+
+export const selectRestaurantReviewsById = (state, payload) =>
+  selectRestaurantState(state)?.entities[payload.restaurantId]?.reviews || [];
+
+export const selectRestaurantProductsById = (state, payload) =>
+  selectRestaurantState(state)?.entities[payload.restaurantId]?.menu || [];
 
 // const selectorTest = () => {
 //   const result1 = selectResult1();

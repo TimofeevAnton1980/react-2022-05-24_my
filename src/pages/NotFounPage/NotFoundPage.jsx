@@ -1,11 +1,11 @@
 import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 import { Layout } from "../../components/Layout/Layout";
 
-export const MainPage = () => {
+export const NotFoundPage = () => {
   return (
     <Layout>
       <ErrorBoundary>
-        <span>Welcome!!!</span>
+        <span>404</span>
       </ErrorBoundary>
     </Layout>
   );

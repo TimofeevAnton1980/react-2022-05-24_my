@@ -1,11 +1,12 @@
 import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
+import RestaurantsContainer from "../../containers/Restaurants/Restaurants";
 import { Layout } from "../../components/Layout/Layout";
 
-export const MainPage = () => {
+export const RestaurantsPage = () => {
   return (
     <Layout>
       <ErrorBoundary>
-        <span>Welcome!!!</span>
+        <RestaurantsContainer />
       </ErrorBoundary>
     </Layout>
   );
