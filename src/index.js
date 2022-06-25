@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { RestaurantsPage } from "./pages/RestaurantsPage/RestaurantsPage";
 import { NotFoundPage } from "./pages/NotFounPage/NotFoundPage";
 import RestaurantContainer from "./containers/Restaurant/Restaurant";
+import {AllProductPage} from "./pages/AllProduct/AllProductPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -23,6 +24,7 @@ root.render(
         </Route>
         <Route path="/basket" element={<BasketPage />} />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="/products" element={<AllProductPage />} />
       </Routes>
     </BrowserRouter>
   </Provider>
