@@ -1,14 +1,16 @@
 import { selectProductIds } from "../selectors";
 import productSlice from "../index";
 import {
-  selectRestaurantAllProducts,
+  selectAllRestaurantProducts,
   selectRestaurantProductsById,
+  selectRestaurants,
 } from "../../restaurant/selectors";
 
 export function loadProducts() {
   return function (dispatch, getState) {
     const productIds = selectProductIds(getState());
-    const restaurantProducts = selectRestaurantAllProducts(getState());
+    console.log(productIds);
+    const restaurantProducts = selectAllRestaurantProducts(getState());
     console.log(restaurantProducts);
     if (
       restaurantProducts.length > 0 &&
@@ -19,9 +21,7 @@ export function loadProducts() {
 
     dispatch(productSlice.actions.startLoading(null));
 
-    fetch(
-      `http://localhost:3001/api/products?${new URLSearchParams({}).toString()}`
-    )
+    fetch(`http://localhost:3001/api/products`)
       .then((response) => response.json())
       .then((products) => {
         dispatch(productSlice.actions.successLoading(products));

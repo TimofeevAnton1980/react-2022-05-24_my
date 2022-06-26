@@ -12,7 +12,9 @@ const AllProductsContainer = ({ className }) => {
   useEffect(() => {
     dispatch(loadProducts());
   });
-
+  if (!productIds?.length) {
+    return null;
+  }
   return productIds?.map((productId) => (
     <Products
       key={productId}
