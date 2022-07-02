@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import { Rating } from "../Rating/Rating";
 import { MenuContainer } from "../../containers/Menu/Menu";
 import { ReviewsContainer } from "../../containers/Reviews/Reviews";
+import { Outlet } from "react-router-dom";
 
 export const Restaurant = ({ restaurant, rating }) => {
   return (
@@ -17,6 +18,7 @@ export const Restaurant = ({ restaurant, rating }) => {
         <div className={styles.reviews}>
           <ReviewsContainer restaurantId={restaurant.id} />
         </div>
+        <Outlet />
       </div>
     </div>
   );

@@ -1,17 +1,21 @@
 import React from "react";
 import classnames from "classnames";
 import styles from "./styles.module.css";
-import { useSelector } from "react-redux";
-import { selectProductNameById } from "../../store/product/selectors";
+import {Link} from "react-router-dom";
 
-export const Products = ({ productId, className }) => {
-  const productName = useSelector((state) =>
-    selectProductNameById(state, productId)
-  );
+export const Products = ({ products, className }) => {
+  // const productName = useSelector((state) =>
+  //   selectProductNameById(state, productId)
+  // );
+  //   console.log(products);
   return (
-    <div className={classnames(styles.root, className)}>
-      <span>{productName}</span>
-      <div className={styles.actions}></div>
-    </div>
+      <div className={classnames(className, styles.root)}>
+      {products?.map(({id, name}) => (
+              <Link  className={styles.product} key={id} to={`/product/${id}`}>
+                  {name}
+              </Link>
+      ))}
+      </div>
+
   );
 };

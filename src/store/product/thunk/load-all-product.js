@@ -9,9 +9,9 @@ import {
 export function loadProducts() {
   return function (dispatch, getState) {
     const productIds = selectProductIds(getState());
-    console.log(productIds);
+    // console.log(productIds);
     const restaurantProducts = selectAllRestaurantProducts(getState());
-    console.log(restaurantProducts);
+    // console.log(restaurantProducts);
     if (
       restaurantProducts.length > 0 &&
       restaurantProducts.every((productId) => productIds.includes(productId))
