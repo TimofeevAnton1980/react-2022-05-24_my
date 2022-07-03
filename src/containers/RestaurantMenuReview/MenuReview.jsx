@@ -6,8 +6,8 @@ import { useParams } from "react-router-dom";
 const MenuReview = ({}) => {
   const params = useParams();
   const id = params.id;
-  const label = params.id.label;
-  // console.log(label);
+  const label = params.label;
+  console.log(params);
   // const dispatch = useDispatch();
 
   // useEffect(() => {
