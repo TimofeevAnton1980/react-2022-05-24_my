@@ -14,10 +14,10 @@ export const Restaurant = ({ restaurant, rating }) => {
         <Rating value={rating} />
       </div>
       <div className={styles.detailedInfo}>
-        <MenuContainer restaurantId={restaurant.id} className={styles.menu} />
-        <div className={styles.reviews}>
-          <ReviewsContainer restaurantId={restaurant.id} />
-        </div>
+        {/*<MenuContainer restaurantId={restaurant.id} className={styles.menu} />*/}
+        {/*<div className={styles.reviews}>*/}
+        {/*  <ReviewsContainer restaurantId={restaurant.id} />*/}
+        {/*</div>*/}
         <Outlet />
       </div>
     </div>
