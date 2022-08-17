@@ -3,11 +3,15 @@ import styles from "./styles.module.css";
 import classnames from "classnames";
 import { BasketItemContainer } from "../../containers/BasketItem/BasketItem";
 
-const Basket = ({ productIds, className }) => (
-  <div className={classnames(styles.root, className)}>
+type Props = {
+    productIds: number[]
+    className: string
+}
+const Basket = (props: Props) => (
+  <div className={classnames(styles.root, props.className)}>
     <h2>Basket</h2>
-    {productIds?.length > 0 &&
-      productIds.map((productId) => (
+    {props.productIds?.length > 0 &&
+    props.productIds.map((productId) => (
         <BasketItemContainer
           key={productId}
           productId={productId}

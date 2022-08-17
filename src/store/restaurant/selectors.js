@@ -14,6 +14,7 @@ export const selectRestaurants = (state) =>
   Object.values(selectRestaurantState(state).entities);
 
 const selectRestaurantReviewIds = (state, restaurantId) => {
+  // console.log(restaurantId);
   return selectRestaurantById(state, restaurantId).reviews;
 };
 
@@ -54,12 +55,7 @@ export const selectAllRestaurantProducts = (state) => {
   }
   return newArr;
 };
-export const selectRestaurantIdsFilteredByName = (state, name) =>
-  //     [
-  //   "Dishoom",
-  //   "Homeslice",
-  //   "Fabrique",
-  // ];
+export const selectRestaurantIdsFilteredByName = (state) =>
   selectRestaurantState(state).ids;
 export const selectRestaurantNameById = (state, restaurantId) =>
   selectRestaurantById(state, restaurantId).name;

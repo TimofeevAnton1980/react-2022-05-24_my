@@ -9,23 +9,14 @@ import { useSearchParams } from "react-router-dom";
 import { RestaurantTabContainer } from "../RestaurantTab/RestaurantTabContainer";
 
 export const RestaurantTabsContainer = ({}) => {
-  const [searchParams] = useSearchParams();
+  // const [searchParams] = useSearchParams();
   const restaurantIds = useSelector((state) =>
-    selectRestaurantIdsFilteredByName(
-      state,
-      searchParams.get("restaurantName") || ""
-    )
+    selectRestaurantIdsFilteredByName(state)
   );
-  console.log(restaurantIds);
+  // console.log(restaurantIds);
   if (restaurantIds?.length === 0) {
     return null;
   }
-  // const { id: restaurantId } = useParams();
-
-  // const tabs = [
-  //   { label: "menu", restaurantId },
-  //   { label: "review", restaurantId },
-  // ];
 
   return (
     <Tabs

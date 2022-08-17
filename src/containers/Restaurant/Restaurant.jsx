@@ -9,7 +9,10 @@ import { loadReviewsIfNotExist } from "../../store/review/thunk/load-reviews";
 import { Outlet, useParams } from "react-router-dom";
 
 const RestaurantContainer = ({ className }) => {
-  const { id: restaurantId } = useParams();
+  // const params = useParams();
+  // console.log(params);
+  // const restaurantId = params.to;
+  const { restaurantId} = useParams();
   const dispatch = useDispatch();
   const restaurant = useSelector((state) =>
     selectRestaurantById(state, restaurantId)
