@@ -11,7 +11,8 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "outDir": "lib/types",
-    "jsx": "react"
+    "jsx": "react",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "include": ["src"]
 }

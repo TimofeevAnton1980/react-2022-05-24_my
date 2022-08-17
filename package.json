@@ -26,7 +26,8 @@
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.5.0",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "typescript-plugin-css-modules": "^3.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
