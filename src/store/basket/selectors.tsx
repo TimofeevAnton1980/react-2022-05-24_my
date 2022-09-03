@@ -1,19 +1,16 @@
 import React from "react";
 
 interface Base {
-  state: [];
-  productId: number;
+  basket: string[];
 }
 
-export const selectBasket: React.FC<Base> = ({ state }) => state.basket;
+export const selectBasket = (state: Base) => state.basket;
 
-export const selectProductIdsFromBasket: React.FC<Base> = ({ state }) => {
+export const selectProductIdsFromBasket = (state: Base) => {
   const basket = selectBasket(state);
 
-  return Object.keys(basket).filter((productId) => !!basket[productId]);
+  return Object.keys(basket).filter((productId: string) => !!basket[productId]);
 };
 
-export const selectProductCountFromBasket: React.FC<Base> = (
-  state,
-  productId
-) => selectBasket(state)[productId] || 0;
+export const selectProductCountFromBasket = (state: Base, productId: string) =>
+  selectBasket(state)[productId] || 0;

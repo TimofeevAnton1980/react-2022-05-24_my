@@ -2,7 +2,11 @@ import { useSelector } from "react-redux";
 import { selectProductNameById } from "../store/product/selectors";
 import { selectProductCountFromBasket } from "../store/basket/selectors";
 
-const useProductWithCount = (productId) => {
+type Props = {
+  productId: string;
+};
+
+const useProductWithCount = ({ productId }: Props) => {
   const productName = useSelector((state) =>
     selectProductNameById(state, productId)
   );

@@ -8,7 +8,7 @@ interface Base {
 }
 
 const BasketContainer: React.FC<Base> = ({ className }) => {
-  const productIds: number[] = useSelector(selectProductIdsFromBasket);
+  const productIds = useSelector(selectProductIdsFromBasket);
   return <Basket productIds={productIds} className={className} />;
 };
 

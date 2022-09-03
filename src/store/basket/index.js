@@ -1,21 +1,8 @@
 import { createAction, createReducer, createSlice } from "@reduxjs/toolkit";
 
-type Todo = {
-  id: string;
-  title: string;
-  completed: boolean;
-}
-
-type TodosState = {
-  list: Todo[];
-}
-
-const initialState: TodosState = {
-  list: [],
-}
-export const basketSlice = createSlice({
+const basketSlice = createSlice({
   name: "basket",
-  initialState,
+  initialState: {},
   reducers: {
     add: (state, { payload }) => {
       state[payload] = (state[payload] || 0) + 1;
@@ -29,3 +16,5 @@ export const basketSlice = createSlice({
     },
   },
 });
+
+export default basketSlice;
