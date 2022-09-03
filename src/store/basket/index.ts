@@ -1,6 +1,11 @@
 import { createAction, createReducer, createSlice } from "@reduxjs/toolkit";
 
-const basketSlice = createSlice({
+type Basket = {
+  add: [];
+  remove: [];
+};
+
+export const basketSlice = createSlice({
   name: "basket",
   initialState: {},
   reducers: {
@@ -16,5 +21,3 @@ const basketSlice = createSlice({
     },
   },
 });
-
-export default basketSlice;
