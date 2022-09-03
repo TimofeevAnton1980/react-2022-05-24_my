@@ -1,23 +1,17 @@
-import { createAction, createReducer, createSlice } from "@reduxjs/toolkit";
+import {
+  createAction,
+  createReducer,
+  createSlice,
+  PayloadAction,
+} from "@reduxjs/toolkit";
 
-type Todo = {
-  id: string;
-  title: string;
-  completed: boolean;
-}
+const initialState = {};
 
-type TodosState = {
-  list: Todo[];
-}
-
-const initialState: TodosState = {
-  list: [],
-}
 export const basketSlice = createSlice({
   name: "basket",
   initialState,
   reducers: {
-    add: (state, { payload }) => {
+    add: (state, { payload }: PayloadAction<string>) => {
       state[payload] = (state[payload] || 0) + 1;
 
       return state;

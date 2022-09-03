@@ -1,16 +1,16 @@
 import React from "react";
 
-interface Base {
-  basket: string[];
+interface Basket {
+  productId: string;
 }
 
-export const selectBasket = (state: Base) => state.basket;
+export const selectBasket = (state: Basket) => state;
 
-export const selectProductIdsFromBasket = (state: Base) => {
+export const selectProductIdsFromBasket = (state: Basket) => {
   const basket = selectBasket(state);
 
-  return Object.keys(basket).filter((productId: string) => !!basket[productId]);
+  return Object.keys(basket).filter((productId) => !!basket[productId]);
 };
 
-export const selectProductCountFromBasket = (state: Base, productId: string) =>
+export const selectProductCountFromBasket = (state: Basket, productId: string) =>
   selectBasket(state)[productId] || 0;

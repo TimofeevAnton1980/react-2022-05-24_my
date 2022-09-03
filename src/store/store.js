@@ -24,3 +24,6 @@ export const store = configureStore({
     loadRestaurantsIfNotExistMiddleware,
   ],
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
