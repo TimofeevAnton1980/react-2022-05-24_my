@@ -1,5 +1,5 @@
-import { configureStore } from "@reduxjs/toolkit";
-import basketSlice from "./basket";
+import {combineReducers, configureStore} from "@reduxjs/toolkit";
+import {basketSlice} from "./basket";
 import productSlice from "./product";
 import restaurantSlice from "./restaurant";
 import reviewSlice from "./review";
@@ -8,16 +8,20 @@ import { logger1 } from "./middlewares/logger";
 import { loadRestaurantsIfNotExistMiddleware } from "./restaurant/middlewares/load-restaurants";
 import React from "react";
 
-interface Base {
-  state?: [];
-  action?: [];
-}
-const rootReducer: React.FC<Base> = ({ state, action }) => ({
-  basket: basketSlice.reducer(state?.basket, action),
-  restaurant: restaurantSlice.reducer(state?.restaurant, action),
-  product: productSlice.reducer(state?.product, action),
-  review: reviewSlice.reducer(state?.review, action),
-  user: userSlice.reducer(state?.user, action),
+// const rootReducer = combineReducers({ state, action }) => ({
+//   basket: basketSlice.reducer(state?.basket, action),
+//   restaurant: restaurantSlice.reducer(state?.restaurant, action),
+//   product: productSlice.reducer(state?.product, action),
+//   review: reviewSlice.reducer(state?.review, action),
+//   user: userSlice.reducer(state?.user, action),
+// });
+
+const rootReducer = combineReducers({
+  basket: basketSlice.reducer,
+  // restaurant: restaurantSlice.reducer(state?.restaurant, action),
+  // product: productSlice.reducer(state?.product, action),
+  // review: reviewSlice.reducer(state?.review, action),
+  // user: userSlice.reducer(state?.user, action),
 });
 
 export const store = configureStore({
@@ -30,7 +34,9 @@ export const store = configureStore({
   ],
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+// export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export type RootState = ReturnType<typeof rootReducer>
+// export type AppStore = ReturnType<typeof setupStore>
+// export type AppDispatch = AppStore['dispatch']

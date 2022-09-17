@@ -4,7 +4,7 @@ import classnames from "classnames";
 
 type Props = {
     productName: string
-    productCount?: number
+    productCount: number
     className: string
 }
 
