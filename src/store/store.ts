@@ -1,5 +1,5 @@
-import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import {basketSlice} from "./basket";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { basketSlice } from "./basket";
 import productSlice from "./product";
 import restaurantSlice from "./restaurant";
 import reviewSlice from "./review";
@@ -37,6 +37,6 @@ export const store = configureStore({
 // export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
-export type RootState = ReturnType<typeof rootReducer>
-// export type AppStore = ReturnType<typeof setupStore>
+export type RootState = ReturnType<typeof rootReducer>;
+// export type AppStore = ReturnType<typeof store>
 // export type AppDispatch = AppStore['dispatch']

@@ -3,11 +3,15 @@ import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 import BasketContainer from "../../containers/Basket/Basket";
 import React from "react";
 
-export const BasketPage = () => {
-    return (
+interface BasketPage {
+  className: string;
+}
+
+export const BasketPage: React.FC<BasketPage> = ({ className }) => {
+  return (
     <Layout>
       <ErrorBoundary>
-        <BasketContainer />
+        <BasketContainer className={className} />
       </ErrorBoundary>
     </Layout>
   );

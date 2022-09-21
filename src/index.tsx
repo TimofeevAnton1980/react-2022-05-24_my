@@ -14,6 +14,10 @@ import { ProductPage } from "./pages/ProductPage/ProductPage";
 import RestaurantMenu from "./containers/RestaurantMenu/RestaurantMenu";
 import RestaurantReview from "./containers/RestaurantReview/RestaurantReview";
 
+type Props = {
+  className: string;
+};
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );

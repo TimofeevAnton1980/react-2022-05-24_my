@@ -1,19 +1,15 @@
 import { useSelector } from "react-redux";
 import { selectProductNameById } from "../store/product/selectors";
-import {selectProductCountFromBasket} from "../store/basket/selectors";
-import {BasketState} from "../store/basket";
+import { selectProductCountFromBasket } from "../store/basket/selectors";
+import { BasketState } from "../store/basket";
+import { useAppSelector } from "./hook_ts";
 
-
-type Props = {
-  productId: string
-}
-
-const useProductWithCount = ({productId}: Props) => {
-  const productName: string = useSelector((state: BasketState) =>
+const useProductWithCount = (productId: string) => {
+  const productName: string = useAppSelector((state) =>
     selectProductNameById(state, productId)
   );
-  const productCount: number = useSelector((state: BasketState) =>
-    selectProductCountFromBasket(state, productId)
+  const productCount: number = useAppSelector((state) =>
+    selectProductCountFromBasket({ state, productId })
   );
 
   return { productName, productCount };
