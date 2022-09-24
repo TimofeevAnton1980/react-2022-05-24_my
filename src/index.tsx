@@ -34,7 +34,10 @@ root.render(
             <Route path="review" element={<RestaurantReview />} />
           </Route>
         </Route>
-        <Route path="/basket" element={<BasketPage />} />
+        <Route
+          path="/basket"
+          element={<BasketPage className={props.className} />}
+        />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/products" element={<AllProductPage />} />
         <Route path="/product/:id" element={<ProductPage />} />
