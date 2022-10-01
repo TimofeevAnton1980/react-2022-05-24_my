@@ -46,8 +46,10 @@ export const selectRestaurantReviewsById = (
   payload: Restaurant
 ) => selectRestaurantState(state)?.entities[payload.id]?.reviews || [];
 
-export const selectRestaurantProductsById = (state: RootState, payload: Restaurant) =>
-  selectRestaurantState(state)?.entities[payload.id]?.menu || [];
+export const selectRestaurantProductsById = (
+  state: RootState,
+  payload: Restaurant
+) => selectRestaurantState(state)?.entities[payload.id]?.menu || [];
 
 export const selectAllRestaurantProducts = (state: RootState) => {
   let arrays = Object.values(selectRestaurantState(state).entities).map(
@@ -66,7 +68,7 @@ export const selectRestaurantIdsFilteredByName = (state: RootState) =>
 export const selectRestaurantNameById = (
   state: RootState,
   restaurantId: string
-) => selectRestaurantById( state, restaurantId ).name;
+) => selectRestaurantById(state, restaurantId).name;
 
 // const selectorTest = () => {
 //   const result1 = selectResult1();

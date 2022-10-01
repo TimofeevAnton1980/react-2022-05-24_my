@@ -7,28 +7,26 @@ import {
 import React, { useEffect } from "react";
 import { loadReviewsIfNotExist } from "../../store/review/thunk/load-reviews";
 import { Outlet, useParams } from "react-router-dom";
+import { useAppSelector, useAppDispatch } from "../../hooks/hook_ts";
 
-
-const RestaurantContainer = ({ className }) => {
+const RestaurantContainer = () => {
   // const params = useParams();
   // console.log(params);
   // const restaurantId = params.to;
-  const { restaurantId} = useParams();
-  const dispatch = useDispatch();
-  const restaurant = useSelector((state) =>
+  const { restaurantId } = useParams();
+  const dispatch = useAppDispatch();
+  const restaurant = useAppSelector((state) =>
     selectRestaurantById(state, restaurantId)
   );
-  const rating = useSelector((state) =>
+  const rating = useAppSelector((state) =>
     selectRestaurantRating(state, restaurantId)
   );
 
   useEffect(() => {
-    dispatch(loadReviewsIfNotExist(restaurantId));
+    dispatch(loadReviewsIfNotExist({ restaurantId }));
   }, [restaurantId]);
 
-  return (
-    <Restaurant restaurant={restaurant} rating={rating} className={className} />
-  );
+  return <Restaurant restaurant={restaurant} rating={rating} />;
 };
 
 export default RestaurantContainer;
