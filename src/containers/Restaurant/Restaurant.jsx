@@ -8,6 +8,7 @@ import React, { useEffect } from "react";
 import { loadReviewsIfNotExist } from "../../store/review/thunk/load-reviews";
 import { Outlet, useParams } from "react-router-dom";
 
+
 const RestaurantContainer = ({ className }) => {
   // const params = useParams();
   // console.log(params);

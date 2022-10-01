@@ -11,13 +11,14 @@ interface Product {
   name: string;
   price: number;
   ingredients: [string, string];
-}
+};
 
 const initialState:ProductState = {
   entities: {},
   ids: [],
   status: "notStarted",
 };
+
 type Acc = Record<string, Product>;
 
 const productSlice = createSlice({

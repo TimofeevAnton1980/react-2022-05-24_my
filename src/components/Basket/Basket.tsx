@@ -5,10 +5,10 @@ import { BasketItemContainer } from "../../containers/BasketItem/BasketItem";
 
 type Props = {
     productIds: string[]
-    className: string
+    // className: string
 }
 const Basket = (props: Props) => (
-  <div className={classnames(styles.root, props.className)}>
+  <div className={classnames(styles.root)}>
     <h2>Basket</h2>
     {props.productIds?.length > 0 &&
     props.productIds.map((productId) => (

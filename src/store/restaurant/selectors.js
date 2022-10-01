@@ -1,32 +1,21 @@
 import { selectReviewByIds } from "../review/selectors";
 import { createSelector } from "reselect";
-import {RootState} from "../store";
-import {Restaurant, RestaurantState} from "./index";
 
-type RestaurantByIdProps = {
-  state: RootState;
-  id: Record<string, Restaurant>;
-};
-type RestaurantReviewProps = {
-  state: RootState;
-  restaurantId: string;
-};
+export const selectRestaurantState = (state) => state.restaurant;
 
-export const selectRestaurantState = (state: RootState) => state.restaurant;
-
-export const selectRestaurantIds = (state: RootState) => selectRestaurantState(state).ids;
-export const selectIsLoading = (state: RootState) =>
+export const selectRestaurantIds = (state) => selectRestaurantState(state).ids;
+export const selectIsLoading = (state) =>
   selectRestaurantState(state).status === "loading";
-export const selectIsFailed = (state: RootState) =>
+export const selectIsFailed = (state) =>
   selectRestaurantState(state).status === "failed";
-export const selectRestaurantById = ({state, id}: RestaurantByIdProps) =>
+export const selectRestaurantById = (state, id) =>
   selectRestaurantState(state).entities[id];
-export const selectRestaurants = (state: RootState) =>
+export const selectRestaurants = (state) =>
   Object.values(selectRestaurantState(state).entities);
 
-const selectRestaurantReviewIds = ({state, restaurantId}: RestaurantReviewProps) => {
+const selectRestaurantReviewIds = (state, restaurantId) => {
   // console.log(restaurantId);
-  return selectRestaurantById({state, restaurantId}).reviews;
+  return selectRestaurantById(state, restaurantId).reviews;
 };
 
 export const selectRestaurantRating = createSelector(
@@ -48,7 +37,7 @@ export const selectRestaurantRating = createSelector(
   }
 );
 
-export const selectRestaurantReviewsById = (state: RootState, payload: Restaurant) =>
+export const selectRestaurantReviewsById = (state, payload) =>
   selectRestaurantState(state)?.entities[payload.restaurantId]?.reviews || [];
 
 export const selectRestaurantProductsById = (state, payload) =>

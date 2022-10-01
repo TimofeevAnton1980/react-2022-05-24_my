@@ -14,9 +14,6 @@ import { ProductPage } from "./pages/ProductPage/ProductPage";
 import RestaurantMenu from "./containers/RestaurantMenu/RestaurantMenu";
 import RestaurantReview from "./containers/RestaurantReview/RestaurantReview";
 
-type Props = {
-  className: string;
-};
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -29,15 +26,12 @@ root.render(
         <Route index element={<MainPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />}>
           <Route index element={<span>Select restaurant</span>} />
-          <Route path=":restaurantId" element={<RestaurantContainer />}>
+          <Route path=":restaurantId" element={<RestaurantContainer className="className" />}>
             <Route path="menu" element={<RestaurantMenu />} />
             <Route path="review" element={<RestaurantReview />} />
           </Route>
         </Route>
-        <Route
-          path="/basket"
-          element={<BasketPage className={props.className} />}
-        />
+        <Route path="/basket" element={<BasketPage />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/products" element={<AllProductPage />} />
         <Route path="/product/:id" element={<ProductPage />} />
