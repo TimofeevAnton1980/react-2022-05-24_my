@@ -1,38 +1,30 @@
 import { selectReviewByIds } from "../review/selectors";
 import { createSelector } from "reselect";
-import {RootState} from "../store";
-import {Restaurant, RestaurantState} from "./index";
-
-type RestaurantByIdProps = {
-  state: RootState;
-  id: Record<string, Restaurant>;
-};
-type RestaurantReviewProps = {
-  state: RootState;
-  restaurantId: string;
-};
+import { RootState } from "../store";
+import { Restaurant, RestaurantState } from "./index";
 
 export const selectRestaurantState = (state: RootState) => state.restaurant;
 
-export const selectRestaurantIds = (state: RootState) => selectRestaurantState(state).ids;
+export const selectRestaurantIds = (state: RootState) =>
+  selectRestaurantState(state).ids;
 export const selectIsLoading = (state: RootState) =>
   selectRestaurantState(state).status === "loading";
 export const selectIsFailed = (state: RootState) =>
   selectRestaurantState(state).status === "failed";
-export const selectRestaurantById = ({state, id}: RestaurantByIdProps) =>
+export const selectRestaurantById = (state: RootState, id: string) =>
   selectRestaurantState(state).entities[id];
 export const selectRestaurants = (state: RootState) =>
   Object.values(selectRestaurantState(state).entities);
 
-const selectRestaurantReviewIds = ({state, restaurantId}: RestaurantReviewProps) => {
+const selectRestaurantReviewIds = (state: RootState, restaurantId: string) => {
   // console.log(restaurantId);
-  return selectRestaurantById({state, restaurantId}).reviews;
+  return selectRestaurantById(state, restaurantId).reviews;
 };
 
 export const selectRestaurantRating = createSelector(
   [
-    (state) => state,
-    (_, restaurantId) => restaurantId,
+    (state: RootState) => state,
+    (_, restaurantId: string) => restaurantId,
     selectRestaurantReviewIds,
   ],
   (state, restaurantId, reviewIds) => {
@@ -43,18 +35,21 @@ export const selectRestaurantRating = createSelector(
     }
 
     return Math.ceil(
-      reviews.reduce((prev, curr) => prev + curr.rating, 0) / reviews.length
+      reviews.reduce((prev: number, curr: {}) => prev + curr.rating, 0) /
+        reviews.length
     );
   }
 );
 
-export const selectRestaurantReviewsById = (state: RootState, payload: Restaurant) =>
-  selectRestaurantState(state)?.entities[payload.restaurantId]?.reviews || [];
+export const selectRestaurantReviewsById = (
+  state: RootState,
+  payload: Restaurant
+) => selectRestaurantState(state)?.entities[payload.id]?.reviews || [];
 
-export const selectRestaurantProductsById = (state, payload) =>
-  selectRestaurantState(state)?.entities[payload.restaurantId]?.menu || [];
+export const selectRestaurantProductsById = (state: RootState, payload: Restaurant) =>
+  selectRestaurantState(state)?.entities[payload.id]?.menu || [];
 
-export const selectAllRestaurantProducts = (state) => {
+export const selectAllRestaurantProducts = (state: RootState) => {
   let arrays = Object.values(selectRestaurantState(state).entities).map(
     (id) => id.menu || []
   );
@@ -66,10 +61,12 @@ export const selectAllRestaurantProducts = (state) => {
   }
   return newArr;
 };
-export const selectRestaurantIdsFilteredByName = (state) =>
+export const selectRestaurantIdsFilteredByName = (state: RootState) =>
   selectRestaurantState(state).ids;
-export const selectRestaurantNameById = (state, restaurantId) =>
-  selectRestaurantById(state, restaurantId).name;
+export const selectRestaurantNameById = (
+  state: RootState,
+  restaurantId: string
+) => selectRestaurantById( state, restaurantId ).name;
 
 // const selectorTest = () => {
 //   const result1 = selectResult1();

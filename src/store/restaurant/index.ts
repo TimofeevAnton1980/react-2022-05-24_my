@@ -1,10 +1,10 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {ProductState} from "../product";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ProductState } from "../product";
 
 export type RestaurantState = {
-  entities: {},
-  ids: string[],
-  status: string,
+  entities: Record<string, Restaurant>;
+  ids: string[];
+  status: string;
 };
 
 export interface Restaurant {
@@ -12,9 +12,9 @@ export interface Restaurant {
   name: string;
   menu: string[];
   reviews: string[];
-};
+}
 
-const initialState:RestaurantState = {
+const initialState: RestaurantState = {
   entities: {},
   ids: [],
   status: "notStarted",
@@ -36,7 +36,10 @@ const restaurantSlice = createSlice({
       state.ids = [];
       state.status = "failed";
     },
-    successLoading: (state: RestaurantState, action: PayloadAction<Restaurant[]>) => {
+    successLoading: (
+      state: RestaurantState,
+      action: PayloadAction<Restaurant[]>
+    ) => {
       state.entities = (action.payload || []).reduce((acc: Acc, restaurant) => {
         acc[restaurant.id] = restaurant;
         return acc;
