@@ -1,26 +1,28 @@
 import { selectReviewByIds } from "../review/selectors";
 import { createSelector } from "reselect";
+import { RootState } from "../store";
 
-export const selectRestaurantState = (state) => state.restaurant;
+export const selectRestaurantState = (state: RootState) => state.restaurant;
 
-export const selectRestaurantIds = (state) => selectRestaurantState(state).ids;
-export const selectIsLoading = (state) =>
+export const selectRestaurantIds = (state: RootState) =>
+  selectRestaurantState(state).ids;
+export const selectIsLoading = (state: RootState) =>
   selectRestaurantState(state).status === "loading";
-export const selectIsFailed = (state) =>
+export const selectIsFailed = (state: RootState) =>
   selectRestaurantState(state).status === "failed";
-export const selectRestaurantById = (state, id) =>
+export const selectRestaurantById = (state: RootState, id: string) =>
   selectRestaurantState(state).entities[id];
-export const selectRestaurants = (state) =>
+export const selectRestaurants = (state: RootState) =>
   Object.values(selectRestaurantState(state).entities);
 
-const selectRestaurantReviewIds = (state, restaurantId) => {
+const selectRestaurantReviewIds = (state: RootState, restaurantId: string) => {
   // console.log(restaurantId);
   return selectRestaurantById(state, restaurantId).reviews;
 };
 
 export const selectRestaurantRating = createSelector(
   [
-    (state) => state,
+    (state: RootState) => state,
     (_, restaurantId) => restaurantId,
     selectRestaurantReviewIds,
   ],
