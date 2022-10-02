@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
   basket: basketSlice.reducer,
   restaurant: restaurantSlice.reducer,
   // product: productSlice.reducer(state?.product, action),
-  // review: reviewSlice.reducer(state?.review, action),
+  review: reviewSlice.reducer,
   // user: userSlice.reducer(state?.user, action),
 });
 

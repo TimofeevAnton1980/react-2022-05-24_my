@@ -2,7 +2,7 @@ import { selectReviewIds } from "../selectors";
 import reviewSlice from "../index";
 import { selectRestaurantReviewsById } from "../../restaurant/selectors";
 
-export function loadReviewsIfNotExist(restaurantId) {
+export function loadReviewsIfNotExist(restaurantId: string) {
   return function (dispatch, getState) {
     const reviewIds = selectReviewIds(getState());
     const restaurantReviews = selectRestaurantReviewsById(getState(), {

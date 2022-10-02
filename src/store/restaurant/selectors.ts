@@ -2,6 +2,7 @@ import { selectReviewByIds } from "../review/selectors";
 import { createSelector } from "reselect";
 import { RootState } from "../store";
 import { Restaurant, RestaurantState } from "./index";
+import { Review } from "../review";
 
 export const selectRestaurantState = (state: RootState) => state.restaurant;
 
@@ -35,7 +36,7 @@ export const selectRestaurantRating = createSelector(
     }
 
     return Math.ceil(
-      reviews.reduce((prev: number, curr: {}) => prev + curr.rating, 0) /
+      reviews.reduce((prev: number, curr: Review) => prev + curr.rating, 0) /
         reviews.length
     );
   }

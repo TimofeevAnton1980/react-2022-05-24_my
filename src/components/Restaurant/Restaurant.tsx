@@ -5,16 +5,27 @@ import { Rating } from "../Rating/Rating";
 import { MenuContainer } from "../../containers/Menu/Menu";
 import { ReviewsContainer } from "../../containers/Reviews/Reviews";
 import { Outlet } from "react-router-dom";
-import {MenuReviewContainer} from "../../containers/MenuReviewContainer/MenuReviewContainer";
+import { MenuReviewContainer } from "../../containers/MenuReviewContainer/MenuReviewContainer";
 
-export const Restaurant = ({ restaurant, rating }) => {
+interface Restaurant {
+  id: string;
+  name: string;
+  menu: string[];
+  reviews: string[];
+}
+type RestaurantProps = {
+  restaurant: Restaurant;
+  rating: number;
+};
+
+export const Restaurant = ({ restaurant, rating }: RestaurantProps) => {
   return (
     <div className={styles.root}>
       <div className={styles.mainInfo}>
         <span className={styles.restaurantName}>{restaurant.name}</span>
         <Rating value={rating} />
       </div>
-        <MenuReviewContainer />
+      <MenuReviewContainer />
       <div className={styles.detailedInfo}>
         <Outlet />
       </div>
