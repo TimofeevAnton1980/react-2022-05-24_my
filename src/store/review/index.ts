@@ -25,10 +25,10 @@ const reviewSlice = createSlice({
   name: "review",
   initialState,
   reducers: {
-    startLoading: (state: ReviewState) => {
+    startLoading: (state: ReviewState, action: PayloadAction<null>) => {
       state.status = "loading";
     },
-    failLoading: (state: ReviewState) => {
+    failLoading: (state: ReviewState, action: PayloadAction<{}>) => {
       state.status = "failed";
     },
     successLoading: (state: ReviewState, action: PayloadAction<Review[]>) => {

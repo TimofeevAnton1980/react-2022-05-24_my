@@ -1,10 +1,21 @@
 import { selectReviewIds } from "../selectors";
-import reviewSlice from "../index";
+import reviewSlice, { Review, ReviewState } from "../index";
 import { selectRestaurantReviewsById } from "../../restaurant/selectors";
-import {RootState} from "../../store";
+import { AppDispatch, RootState } from "../../store";
+import { useDispatch } from "react-redux";
+import { Dispatch } from "redux";
+import { ThunkAction } from "redux-thunk";
+import { PayloadAction } from "@reduxjs/toolkit";
+import { Restaurant } from "../../restaurant";
+import {useAppDispatch} from "../../../hooks/hook_ts";
 
-export function loadReviewsIfNotExist(restaurantId: string) {
-  return function (dispatch: ({}) => {}, getState: () => RootState) {
+
+// ThunkAction<void, RootState, unknown, PayloadAction<Review[] | null | {}>>
+export function loadReviewsIfNotExist(
+  restaurantId: string
+)  {
+  return function (
+      dispatch = useAppDispatch(), getState: () => RootState) {
     const reviewIds = selectReviewIds(getState());
     const id = restaurantId;
     const restaurantReviews = selectRestaurantReviewsById(getState(), {

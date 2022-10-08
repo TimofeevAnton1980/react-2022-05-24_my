@@ -23,7 +23,7 @@ const RestaurantContainer = () => {
   );
 
   useEffect(() => {
-    dispatch(loadReviewsIfNotExist({ restaurantId || '' }));
+    dispatch(loadReviewsIfNotExist({ restaurantId || '' }))
   }, [restaurantId || '']);
 
   return <Restaurant restaurant={restaurant} rating={rating} />;
