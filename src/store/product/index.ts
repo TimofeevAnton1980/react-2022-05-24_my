@@ -1,12 +1,13 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {Restaurant} from "../restaurant";
 
 export type ProductState = {
-  entities: {},
+  entities: Record<string, Product>,
   ids: string[],
   status: string,
 };
 
-interface Product {
+export interface Product {
   id: string;
   name: string;
   price: number;

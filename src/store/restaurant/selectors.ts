@@ -44,7 +44,7 @@ export const selectRestaurantRating = createSelector(
 
 export const selectRestaurantReviewsById = (
   state: RootState,
-  payload: Restaurant
+  payload: { id: string }
 ) => selectRestaurantState(state)?.entities[payload.id]?.reviews || [];
 
 export const selectRestaurantProductsById = (

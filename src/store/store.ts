@@ -19,7 +19,7 @@ import React from "react";
 const rootReducer = combineReducers({
   basket: basketSlice.reducer,
   restaurant: restaurantSlice.reducer,
-  // product: productSlice.reducer(state?.product, action),
+  product: productSlice.reducer,
   review: reviewSlice.reducer,
   // user: userSlice.reducer(state?.user, action),
 });

@@ -1,14 +1,12 @@
 import { selectReviewIds } from "../selectors";
 import reviewSlice from "../index";
 import { selectRestaurantReviewsById } from "../../restaurant/selectors";
-import {RootState} from "../../store";
 
-export function loadReviewsIfNotExist(restaurantId: string) {
-  return function (dispatch: ({}) => {}, getState: () => RootState) {
+export function loadReviewsIfNotExist(restaurantId) {
+  return function (dispatch, getState) {
     const reviewIds = selectReviewIds(getState());
-    const id = restaurantId;
     const restaurantReviews = selectRestaurantReviewsById(getState(), {
-      id,
+      restaurantId,
     });
 
     if (restaurantReviews.every((reviewId) => reviewIds.includes(reviewId))) {
