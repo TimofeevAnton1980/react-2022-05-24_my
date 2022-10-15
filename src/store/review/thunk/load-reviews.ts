@@ -6,16 +6,11 @@ import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { Restaurant } from "../../restaurant";
-import {useAppDispatch} from "../../../hooks/hook_ts";
-
+import { useAppDispatch } from "../../../hooks/hook_ts";
 
 // ThunkAction<void, RootState, unknown, PayloadAction<Review[] | null | {}>>
-export function loadReviewsIfNotExist(
-  restaurantId: string
-)  {
-  return function (
-      dispatch = useAppDispatch(), getState: () => RootState) {
+export function loadReviewsIfNotExist(restaurantId: string) {
+  return function (dispatch = useAppDispatch(), getState: () => RootState) {
     const reviewIds = selectReviewIds(getState());
     const id = restaurantId;
     const restaurantReviews = selectRestaurantReviewsById(getState(), {

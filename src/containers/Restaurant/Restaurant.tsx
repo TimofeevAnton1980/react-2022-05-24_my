@@ -27,13 +27,7 @@ const RestaurantContainer = () => {
   );
 
   useEffect(() => {
-    dispatch as ThunkAction<
-      void,
-      RootState,
-      unknown,
-      PayloadAction<RestaurantInterface[]>
-    >;
-    loadReviewsIfNotExist(restaurantId || "");
+    dispatch<any>(loadReviewsIfNotExist(restaurantId || ""));
   }, [restaurantId || ""]);
 
   return <Restaurant restaurant={restaurant} rating={rating} />;

@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Restaurant } from "../restaurant";
 
 export type ReviewState = {
   entities: Record<string, Review>;

@@ -1,8 +1,8 @@
 import { selectReviewByIds } from "../review/selectors";
 import { createSelector } from "reselect";
-import { Restaurant, RestaurantState } from "./index";
 import { Review } from "../review";
-import {RootState} from "../store";
+import { RootState } from "../store";
+import { RestaurantInterface } from "./index";
 
 export const selectRestaurantState = (state: RootState) => state.restaurant;
 
@@ -49,7 +49,7 @@ export const selectRestaurantReviewsById = (
 
 export const selectRestaurantProductsById = (
   state: RootState,
-  payload: Restaurant
+  payload: RestaurantInterface
 ) => selectRestaurantState(state)?.entities[payload.id]?.menu || [];
 
 export const selectAllRestaurantProducts = (state: RootState) => {

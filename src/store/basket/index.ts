@@ -1,4 +1,10 @@
-import {createAction, createReducer, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {
+  createAction,
+  createReducer,
+  createSlice,
+  PayloadAction,
+} from "@reduxjs/toolkit";
+import reviewSlice from "../review";
 // import {BasketState} from "../../types/Basket";
 
 // type State = {
@@ -25,30 +31,34 @@ import {createAction, createReducer, createSlice, PayloadAction} from "@reduxjs/
 export type BasketState = Record<string, number>;
 
 export interface BasketActionPayload {
-    productId: string
+  productId: string;
 }
-const initialState:BasketState = {};
+const initialState: BasketState = {};
 
-export const basketSlice = createSlice({
-    name: "basket",
-    initialState,
-    reducers: {
-        add: (state: BasketState, action: PayloadAction<BasketActionPayload> ) => {
-            const productId = action.payload?.productId;
-            if (!productId) {
-                return state;
-            }
-            state[productId] = (state[productId] || 0) + 1;
-            return state;
-        },
-        remove: (state: BasketState, action: PayloadAction<BasketActionPayload>) => {
-            const productId = action.payload?.productId;
-            if (!productId || !state[productId]) {
-                return state;
-            }
-            state[productId] = (state[productId] || 0) - 1;
-            return state;
-        },
-        clean: () => ({}),
+const basketSlice = createSlice({
+  name: "basket",
+  initialState,
+  reducers: {
+    add: (state: BasketState, action: PayloadAction<BasketActionPayload>) => {
+      const productId = action.payload?.productId;
+      if (!productId) {
+        return state;
+      }
+      state[productId] = (state[productId] || 0) + 1;
+      return state;
     },
+    remove: (
+      state: BasketState,
+      action: PayloadAction<BasketActionPayload>
+    ) => {
+      const productId = action.payload?.productId;
+      if (!productId || !state[productId]) {
+        return state;
+      }
+      state[productId] = (state[productId] || 0) - 1;
+      return state;
+    },
+    clean: () => ({}),
+  },
 });
+export default basketSlice;

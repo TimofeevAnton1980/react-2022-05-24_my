@@ -7,12 +7,12 @@ import {
 } from "../../store/review/selectors";
 import { loadUsersIfNotExist } from "../../store/user/thunks/load-users";
 import { selectRestaurantReviewsById } from "../../store/restaurant/selectors";
-import {useParams} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../hooks/hook_ts";
+import { useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../hooks/hook_ts";
 
 type Props = {
   id: string;
-}
+};
 
 export const ReviewsContainer: React.FC<Props> = ({ id }) => {
   // const {restaurantId} = useParams();
@@ -24,7 +24,7 @@ export const ReviewsContainer: React.FC<Props> = ({ id }) => {
   );
 
   useEffect(() => {
-    dispatch(loadUsersIfNotExist());
+    dispatch<any>(loadUsersIfNotExist());
   }, []);
 
   if (isReviewsFailed) {
@@ -36,6 +36,5 @@ export const ReviewsContainer: React.FC<Props> = ({ id }) => {
   ) : (
     // <Reviews reviewIds={reviewIds} {...props} />
     <Reviews reviewIds={reviewIds} />
-
-);
+  );
 };

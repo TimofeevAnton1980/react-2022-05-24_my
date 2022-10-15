@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { basketSlice } from "./basket";
+import basketSlice from "./basket";
 import productSlice from "./product";
 import restaurantSlice from "./restaurant";
 import reviewSlice from "./review";

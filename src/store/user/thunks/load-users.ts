@@ -1,9 +1,10 @@
 import { selectUserIds } from "../selectors";
 import userSlice from "../index";
-import {RootState} from "../../store";
+import { RootState } from "../../store";
+import { useAppDispatch } from "../../../hooks/hook_ts";
 
 export function loadUsersIfNotExist() {
-  return function (dispatch: ({}) => {}, getState: () => RootState) {
+  return function (dispatch = useAppDispatch(), getState: () => RootState) {
     if (selectUserIds(getState())?.length > 0) {
       console.log("already loaded");
 
