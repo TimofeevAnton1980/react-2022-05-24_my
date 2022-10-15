@@ -1,8 +1,8 @@
 import { selectReviewByIds } from "../review/selectors";
 import { createSelector } from "reselect";
-import { RootState } from "../store";
 import { Restaurant, RestaurantState } from "./index";
 import { Review } from "../review";
+import {RootState} from "../store";
 
 export const selectRestaurantState = (state: RootState) => state.restaurant;
 

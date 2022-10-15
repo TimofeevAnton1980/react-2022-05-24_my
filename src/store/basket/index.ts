@@ -24,7 +24,7 @@ import {createAction, createReducer, createSlice, PayloadAction} from "@reduxjs/
 
 export type BasketState = Record<string, number>;
 
-interface BasketActionPayload {
+export interface BasketActionPayload {
     productId: string
 }
 const initialState:BasketState = {};

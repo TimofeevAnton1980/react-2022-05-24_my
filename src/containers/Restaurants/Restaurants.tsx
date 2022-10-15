@@ -10,12 +10,13 @@ import {
 
   loadRestaurantsIfNotExist,
 } from "../../store/restaurant/thunks/load-restaurants";
+import {useAppDispatch, useAppSelector} from "../../hooks/hook_ts";
 
 const RestaurantsContainer = () => {
-  const dispatch = useDispatch();
-  const restaurantIds = useSelector(selectRestaurantIds);
-  const isLoading = useSelector(selectIsLoading);
-  const isFailed = useSelector(selectIsFailed);
+  const dispatch = useAppDispatch();
+  const restaurantIds = useAppSelector(selectRestaurantIds);
+  const isLoading = useAppSelector(selectIsLoading);
+  const isFailed = useAppSelector(selectIsFailed);
 
   // load restaurants with thunk
   useEffect(() => {

@@ -26,10 +26,10 @@ const productSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
-    startLoading: (state: ProductState) => {
+    startLoading: (state: ProductState,  action: PayloadAction<null>) => {
       state.status = "loading";
     },
-    failLoading: (state: ProductState) => {
+    failLoading: (state: ProductState, action: PayloadAction<{}>) => {
       state.status = "failed";
     },
     successLoading: (state: ProductState, action: PayloadAction<Product[]>) => {
