@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ProductState } from "../product";
 
 export type RestaurantState = {
-  entities: Record<string, Restaurant>;
+  entities: Record<string, RestaurantInterface>;
   ids: string[];
   status: string;
 };
 
-export interface Restaurant {
+export interface RestaurantInterface {
   id: string;
   name: string;
   menu: string[];
@@ -20,7 +20,7 @@ const initialState: RestaurantState = {
   status: "notStarted",
 };
 
-export type Acc = Record<string, Restaurant>;
+export type Acc = Record<string, RestaurantInterface>;
 
 const restaurantSlice = createSlice({
   name: "restaurant",
@@ -38,7 +38,7 @@ const restaurantSlice = createSlice({
     },
     successLoading: (
       state: RestaurantState,
-      action: PayloadAction<Restaurant[]>
+      action: PayloadAction<RestaurantInterface[]>
     ) => {
       state.entities = (action.payload || []).reduce((acc: Acc, restaurant) => {
         acc[restaurant.id] = restaurant;

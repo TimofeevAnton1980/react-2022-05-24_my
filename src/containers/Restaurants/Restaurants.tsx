@@ -6,11 +6,12 @@ import {
   selectRestaurantIds,
 } from "../../store/restaurant/selectors";
 import React, { useEffect } from "react";
-import {
-
-  loadRestaurantsIfNotExist,
-} from "../../store/restaurant/thunks/load-restaurants";
-import {useAppDispatch, useAppSelector} from "../../hooks/hook_ts";
+import { loadRestaurantsIfNotExist } from "../../store/restaurant/thunks/load-restaurants";
+import { useAppDispatch, useAppSelector } from "../../hooks/hook_ts";
+import { RootState } from "../../store/store";
+import { RestaurantInterface } from "../../store/restaurant";
+import { PayloadAction } from "@reduxjs/toolkit";
+import { ThunkAction } from "redux-thunk";
 
 const RestaurantsContainer = () => {
   const dispatch = useAppDispatch();
@@ -20,7 +21,13 @@ const RestaurantsContainer = () => {
 
   // load restaurants with thunk
   useEffect(() => {
-    dispatch(loadRestaurantsIfNotExist());
+    dispatch as ThunkAction<
+      void,
+      RootState,
+      unknown,
+      PayloadAction<RestaurantInterface[]>
+    >;
+    loadRestaurantsIfNotExist();
   }, []);
 
   // load restaurants with middleware
