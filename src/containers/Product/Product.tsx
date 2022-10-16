@@ -19,11 +19,11 @@ const ProductContainer: React.FC<ProductContainerProps> = ({
   const dispatch = useAppDispatch();
 
   const onRemoveProduct = useCallback(
-    () => dispatch<any>(basketSlice.actions.remove(productId)),
+    () => dispatch<any>(basketSlice.actions.remove({ productId })),
     [productId]
   );
   const onAddProduct = useCallback(
-    () => dispatch(basketSlice.actions.add(productId)),
+    () => dispatch(basketSlice.actions.add({ productId })),
     [productId]
   );
 

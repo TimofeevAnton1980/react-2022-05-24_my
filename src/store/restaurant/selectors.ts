@@ -49,7 +49,7 @@ export const selectRestaurantReviewsById = (
 
 export const selectRestaurantProductsById = (
   state: RootState,
-  payload: RestaurantInterface
+  payload: { id: string | undefined }
 ) => selectRestaurantState(state)?.entities[payload.id]?.menu || [];
 
 export const selectAllRestaurantProducts = (state: RootState) => {

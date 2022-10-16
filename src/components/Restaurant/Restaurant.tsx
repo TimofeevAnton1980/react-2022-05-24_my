@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 import styles from "./styles.module.css";
 import { Rating } from "../Rating/Rating";
-import { MenuContainer } from "../../containers/Menu/Menu";
-import { ReviewsContainer } from "../../containers/Reviews/Reviews";
 import { Outlet } from "react-router-dom";
 import { MenuReviewContainer } from "../../containers/MenuReviewContainer/MenuReviewContainer";
 

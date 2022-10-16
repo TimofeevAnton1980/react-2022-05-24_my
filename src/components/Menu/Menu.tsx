@@ -4,11 +4,10 @@ import classnames from "classnames";
 import ProductContainer from "../../containers/Product/Product";
 
 interface MenuInterface {
-    productIds:string[],
-    className: string,
+  productIds: string[];
 }
-const Menu: React.FC<MenuInterface> = ({ productIds, className }) => (
-  <div className={classnames(styles.root, className)}>
+const Menu: React.FC<MenuInterface> = ({ productIds }) => (
+  <div className={classnames(styles.root)}>
     <span className={styles.menuTitle}>Menu</span>
     {productIds?.map((productId) => (
       <ProductContainer
