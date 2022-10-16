@@ -13,7 +13,7 @@ interface Restaurant {
   menu: string[];
   reviews: string[];
 }
-type RestaurantProps = {
+export type RestaurantProps = {
   restaurant: Restaurant;
   rating: number;
 };

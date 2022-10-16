@@ -32,6 +32,7 @@ export type BasketState = Record<string, number>;
 
 export interface BasketActionPayload {
   productId: string;
+  className: string;
 }
 const initialState: BasketState = {};
 

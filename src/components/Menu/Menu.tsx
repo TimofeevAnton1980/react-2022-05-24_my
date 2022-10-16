@@ -3,7 +3,11 @@ import styles from "./styles.module.css";
 import classnames from "classnames";
 import ProductContainer from "../../containers/Product/Product";
 
-const Menu = ({ productIds, className }) => (
+interface MenuInterface {
+    productIds:string[],
+    className: string,
+}
+const Menu: React.FC<MenuInterface> = ({ productIds, className }) => (
   <div className={classnames(styles.root, className)}>
     <span className={styles.menuTitle}>Menu</span>
     {productIds?.map((productId) => (

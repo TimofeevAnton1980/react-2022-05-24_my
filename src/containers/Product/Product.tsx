@@ -5,7 +5,7 @@ import useProductWithCount from "../../hooks/useProductWithCount";
 import { useAppDispatch } from "../../hooks/hook_ts";
 import basketSlice, { BasketActionPayload } from "../../store/basket";
 
-const ProductContainer: React.FC<BasketActionPayload> = ({ productId }) => {
+const ProductContainer: React.FC<BasketActionPayload> = ({ productId, className }) => {
   const { productName, productCount } = useProductWithCount(productId);
 
   const dispatch = useAppDispatch();
@@ -25,6 +25,7 @@ const ProductContainer: React.FC<BasketActionPayload> = ({ productId }) => {
       productCount={productCount}
       removeProduct={onRemoveProduct}
       addProduct={onAddProduct}
+      className={className}
     />
   );
 };

@@ -11,7 +11,7 @@ export function loadUsersIfNotExist() {
       return;
     }
 
-    dispatch(userSlice.actions.startLoading());
+    dispatch(userSlice.actions.startLoading(null));
 
     fetch("http://localhost:3001/api/users")
       .then((response) => response.json())

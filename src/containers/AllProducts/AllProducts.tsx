@@ -1,16 +1,21 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {selectProductIds, selectProductNameById, selectProducts} from "../../store/product/selectors";
+import {
+  selectProductIds,
+  selectProductNameById,
+  selectProducts,
+} from "../../store/product/selectors";
 import { Products } from "../../components/Products/Products";
 import styles from "../../components/Menu/styles.module.css";
 import { loadProducts } from "../../store/product/thunk/load-all-product";
+import { useAppDispatch, useAppSelector } from "../../hooks/hook_ts";
 
-const AllProductsContainer = ({ className }) => {
-  const dispatch = useDispatch();
-  const products = useSelector((state) => selectProducts(state));
+const AllProductsContainer = () => {
+  const dispatch = useAppDispatch();
+  const products = useAppSelector((state) => selectProducts(state));
   // console.log(products);
   useEffect(() => {
-    dispatch(loadProducts());
+    dispatch<any>(loadProducts());
   }, []);
   if (!products?.length) {
     return null;
@@ -18,7 +23,7 @@ const AllProductsContainer = ({ className }) => {
   // const productName = useSelector((state) =>
   //     selectProductNameById(state, productId)
   // );
-  return <Products products={products} />
+  return <Products products={products} />;
   // productIds?.map((productId) => (
   //   <Product
   //     key={productId}

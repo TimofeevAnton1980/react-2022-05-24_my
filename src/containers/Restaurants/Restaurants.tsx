@@ -21,13 +21,7 @@ const RestaurantsContainer = () => {
 
   // load restaurants with thunk
   useEffect(() => {
-    dispatch as ThunkAction<
-      void,
-      RootState,
-      unknown,
-      PayloadAction<RestaurantInterface[]>
-    >;
-    loadRestaurantsIfNotExist();
+    dispatch<any>(loadRestaurantsIfNotExist());
   }, []);
 
   // load restaurants with middleware

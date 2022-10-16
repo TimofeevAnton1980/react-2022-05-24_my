@@ -5,9 +5,11 @@ import {
   selectRestaurantProductsById,
   selectRestaurants,
 } from "../../restaurant/selectors";
+import { useAppDispatch } from "../../../hooks/hook_ts";
+import { RootState } from "../../store";
 
 export function loadProducts() {
-  return function (dispatch, getState) {
+  return function (dispatch = useAppDispatch(), getState: () => RootState) {
     const productIds = selectProductIds(getState());
     // console.log(productIds);
     const restaurantProducts = selectAllRestaurantProducts(getState());

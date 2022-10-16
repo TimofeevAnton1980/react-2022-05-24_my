@@ -8,10 +8,6 @@ import React, { useEffect } from "react";
 import { loadReviewsIfNotExist } from "../../store/review/thunk/load-reviews";
 import { Outlet, useParams } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../hooks/hook_ts";
-import { ThunkAction } from "redux-thunk";
-import { RootState } from "../../store/store";
-import { PayloadAction } from "@reduxjs/toolkit";
-import { RestaurantInterface } from "../../store/restaurant";
 
 const RestaurantContainer = () => {
   // const params = useParams();

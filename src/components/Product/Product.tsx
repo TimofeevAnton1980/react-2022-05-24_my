@@ -16,7 +16,7 @@ export const Product: React.FC<ProductProps> = ({
   addProduct,
 }) => {
   return (
-    <div className={classnames(styles.root)}>
+    <div className={classnames(styles.root, className)}>
       <span>{name}</span>
       <div className={styles.actions}>
         <button

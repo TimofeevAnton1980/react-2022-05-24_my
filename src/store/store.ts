@@ -21,7 +21,7 @@ const rootReducer = combineReducers({
   restaurant: restaurantSlice.reducer,
   product: productSlice.reducer,
   review: reviewSlice.reducer,
-  // user: userSlice.reducer(state?.user, action),
+  user: userSlice.reducer,
 });
 
 export const store = configureStore({
