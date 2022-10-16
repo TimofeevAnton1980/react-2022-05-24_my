@@ -7,13 +7,15 @@ type ProductProps = {
   name: string,
   productCount: number,
   removeProduct: (e: React.MouseEvent) => void,
-  addProduct: (e: React.MouseEvent) => void
+  addProduct: (e: React.MouseEvent) => void,
+  className: string
 }
 export const Product: React.FC<ProductProps> = ({
   name,
   productCount,
   removeProduct,
   addProduct,
+  className,
 }) => {
   return (
     <div className={classnames(styles.root, className)}>
