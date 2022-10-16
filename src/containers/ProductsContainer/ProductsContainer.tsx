@@ -4,10 +4,11 @@ import {selectProductIds, selectProductNameById} from "../../store/product/selec
 import { Product } from "../../components/Products/Products";
 import styles from "../../components/Menu/styles.module.css";
 import { loadProducts } from "../../store/product/thunk/load-all-product";
+import {useAppDispatch, useAppSelector} from "../../hooks/hook_ts";
 
-const ProductsContainer = ({ className }) => {
-  const dispatch = useDispatch();
-  const productIds = useSelector((state) => selectProductIds(state));
+const ProductsContainer = ({ className: string }) => {
+  const dispatch = useAppDispatch();
+  const productIds = useAppSelector((state) => selectProductIds(state));
   // console.log(productIds);
   useEffect(() => {
     dispatch(loadProducts());
@@ -15,7 +16,7 @@ const ProductsContainer = ({ className }) => {
   if (!productIds?.length) {
     return null;
   }
-  return productIds?.map((productId) => (
+  return productIds?.map((productId: string) => (
     <Product
       key={productId}
       productId={productId}
