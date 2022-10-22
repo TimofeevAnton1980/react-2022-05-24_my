@@ -1,8 +1,9 @@
 import { loadRestaurants } from "../actions";
 import restaurantSlice from "../index";
 import { selectRestaurantIds } from "../selectors";
+import { Middleware } from "redux";
 
-export const loadRestaurantsIfNotExistMiddleware =
+export const loadRestaurantsIfNotExistMiddleware: Middleware =
   (store) => (next) => (action) => {
     if (action.type !== loadRestaurants.type) {
       return next(action);

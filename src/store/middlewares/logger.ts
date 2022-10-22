@@ -1,12 +1,13 @@
 import { selectBasket } from "../basket/selectors";
+import { Middleware } from "redux";
 
-export const logger1 = (store) => (next) => (action) => {
+export const logger1: Middleware = (store) => (next) => (action) => {
   console.log("1: ", action);
 
   next(action);
 };
 
-export const logger2 = (store) => (next) => (action) => {
+export const logger2: Middleware = (store) => (next) => (action) => {
   console.log("2: ", action);
 
   next(action);
