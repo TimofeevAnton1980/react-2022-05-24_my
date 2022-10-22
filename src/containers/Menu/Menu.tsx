@@ -22,7 +22,7 @@ export const MenuContainer = () => {
   const isProductsLoading = useAppSelector(selectIsProductsLoading);
   const isProductsFailed = useAppSelector(selectIsProductsFailed);
   const productIds = useAppSelector((state) =>
-    selectRestaurantProductsById(state, {payload: {id}, type: "restaurant/successLoading"})
+    selectRestaurantProductsById(state, id)
   );
   console.log(productIds);
   useEffect(() => {

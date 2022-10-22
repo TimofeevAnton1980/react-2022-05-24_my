@@ -20,7 +20,7 @@ export const ReviewsContainer: React.FC<Props> = ({ id }) => {
   const isReviewsLoading = useAppSelector(selectIsReviewsLoading);
   const isReviewsFailed = useAppSelector(selectIsReviewsFailed);
   const reviewIds = useAppSelector((state) =>
-    selectRestaurantReviewsById(state, {payload: {id}, type: "restaurant/successLoading"})
+    selectRestaurantReviewsById(state, id)
   );
   console.log(reviewIds);
   useEffect(() => {

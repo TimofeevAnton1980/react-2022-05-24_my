@@ -1,15 +1,14 @@
 import { selectProductIds } from "../selectors";
 import productSlice from "../index";
 import { selectRestaurantProductsById } from "../../restaurant/selectors";
-import {useAppDispatch} from "../../../hooks/hook_ts";
-import {RootState} from "../../store";
+import { useAppDispatch } from "../../../hooks/hook_ts";
+import { RootState } from "../../store";
 
 export function loadProductsIfNotExist(id: string | undefined) {
   return function (dispatch = useAppDispatch(), getState: () => RootState) {
     // const dispatch = useAppDispatch();
     const productIds = selectProductIds(getState());
-    const restaurantProducts = selectRestaurantProductsById(getState(),
-        {payload: {id}, type: "restaurant/successLoading"});
+    const restaurantProducts = selectRestaurantProductsById(getState(), id);
 
     if (
       restaurantProducts.every((productId) => productIds.includes(productId))
@@ -20,9 +19,7 @@ export function loadProductsIfNotExist(id: string | undefined) {
     dispatch(productSlice.actions.startLoading(null));
 
     fetch(
-      `http://localhost:3001/api/products?${new URLSearchParams(
-        id
-      ).toString()}`
+      `http://localhost:3001/api/products?${new URLSearchParams(id).toString()}`
     )
       .then((response) => response.json())
       .then((products) => {
