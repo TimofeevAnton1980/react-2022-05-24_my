@@ -14,7 +14,7 @@ export const Products: React.FC<ProductsProps> = ({ products }) => {
   // const productName = useSelector((state) =>
   //   selectProductNameById(state, productId)
   // );
-  //   console.log(products);
+    console.log(products);
   return (
     <div className={classnames(styles.root)}>
       {products?.map(({ id, name }) => (

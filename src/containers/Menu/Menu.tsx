@@ -12,17 +12,19 @@ import { useAppDispatch, useAppSelector } from "../../hooks/hook_ts";
 import styles from "../../components/Menu/styles.module.css";
 
 export const MenuContainer = () => {
-  const { id } = useParams();
+  const { restaurantId } = useParams();
   // const params = useParams();
-  // console.log(params);
+  // console.log(params.id);
 
+  let id = restaurantId;
+  console.log(id);
   const dispatch = useAppDispatch();
   const isProductsLoading = useAppSelector(selectIsProductsLoading);
   const isProductsFailed = useAppSelector(selectIsProductsFailed);
   const productIds = useAppSelector((state) =>
-    selectRestaurantProductsById(state, { id })
+    selectRestaurantProductsById(state, {payload: {id}, type: "restaurant/successLoading"})
   );
-
+  console.log(productIds);
   useEffect(() => {
     dispatch<any>(loadProductsIfNotExist(id));
   }, [id]);

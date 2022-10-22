@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 import { MenuReviewContainer } from "../../containers/MenuReviewContainer/MenuReviewContainer";
 
 interface Restaurant {
-  id: string;
+  id: string | undefined;
   name: string;
   menu: string[];
   reviews: string[];

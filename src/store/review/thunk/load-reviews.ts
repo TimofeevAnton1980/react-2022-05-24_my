@@ -9,13 +9,11 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { useAppDispatch } from "../../../hooks/hook_ts";
 
 // ThunkAction<void, RootState, unknown, PayloadAction<Review[] | null | {}>>
-export function loadReviewsIfNotExist(restaurantId: string) {
+export function loadReviewsIfNotExist(restaurantId: string | undefined) {
   return function (dispatch = useAppDispatch(), getState: () => RootState) {
     const reviewIds = selectReviewIds(getState());
     const id = restaurantId;
-    const restaurantReviews = selectRestaurantReviewsById(getState(), {
-      id,
-    });
+    const restaurantReviews = selectRestaurantReviewsById(getState(), {payload: {id}, type: "restaurant/successLoading"});
 
     if (restaurantReviews.every((reviewId) => reviewIds.includes(reviewId))) {
       return;
@@ -24,9 +22,9 @@ export function loadReviewsIfNotExist(restaurantId: string) {
     dispatch(reviewSlice.actions.startLoading(null));
 
     fetch(
-      `http://localhost:3001/api/reviews?${new URLSearchParams({
-        id: restaurantId,
-      }).toString()}`
+      `http://localhost:3001/api/reviews?${new URLSearchParams(
+        id
+      ).toString()}`
     )
       .then((response) => response.json())
       .then((reviews) => {

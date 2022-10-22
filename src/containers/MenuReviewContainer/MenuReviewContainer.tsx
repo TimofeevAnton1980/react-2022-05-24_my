@@ -8,12 +8,12 @@ export const MenuReviewContainer = ({}) => {
   // console.log({ to: restaurantId });
   const tabs = ["menu", "review"];
 
-  type RenderTab = {
-    id: string;
-  };
+  // type RenderTab = {
+  //   id: string;
+  // };
   return (
     <Tabs
-      renderTab={({ id }: RenderTab) => (
+      renderTab={(id: string | undefined) => (
         <MenuReviewTabContainer
           key={id}
           restaurantId={restaurantId}

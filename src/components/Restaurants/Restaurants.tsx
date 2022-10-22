@@ -5,7 +5,7 @@ import { RestaurantTabsContainer } from "../../containers/RestaurantTabs/Restaur
 import { Outlet } from "react-router-dom";
 
 type Props = {
-    restaurantIds: string[]
+    restaurantIds: (string | undefined)[]
 }
 export const Restaurants = ({ restaurantIds }: Props) => {
   if (!restaurantIds?.length) {

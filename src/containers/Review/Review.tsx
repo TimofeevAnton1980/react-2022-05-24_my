@@ -5,7 +5,7 @@ import { MemoReview } from "../../components/Review/Review";
 import {useAppSelector} from "../../hooks/hook_ts";
 
 type ReviewContainerProps = {
-  reviewId: string
+  reviewId: string | undefined
 }
 const ReviewContainer: React.FC<ReviewContainerProps> = ({ reviewId }) => {
   const review = useAppSelector((state) => selectReviewById(state, reviewId));

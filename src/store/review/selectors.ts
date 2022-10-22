@@ -4,13 +4,13 @@ export const selectReviewState = (state: RootState) => state.review;
 export const selectReviewIds = (state: RootState) =>
   selectReviewState(state).ids;
 
-export const selectReviewById = (state: RootState, id: string) =>
-  selectReviewState(state).entities[id];
+export const selectReviewById = (state: RootState, id: string | undefined) =>
+  selectReviewState(state).entities[id || ""];
 
-export const selectReviewByIds = (state: RootState, ids: string[]) => {
+export const selectReviewByIds = (state: RootState, ids: (string | undefined)[]) => {
   const reviewById = selectReviewState(state).entities;
 
-  return ids.map((id) => reviewById[id]);
+  return ids.map((id) => reviewById[id || ""]);
 };
 
 export const selectIsReviewsLoading = (state: RootState) =>

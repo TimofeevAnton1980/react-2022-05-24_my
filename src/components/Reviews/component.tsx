@@ -3,7 +3,7 @@ import { NewReviewForm } from "../NewReviewForm/NewReviewForm";
 import ReviewContainer from "../../containers/Review/Review";
 
 type ReviewProps = {
-    reviewIds: string[]
+    reviewIds: (string | undefined)[]
 }
 
 export const Reviews: React.FC<ReviewProps>  = ({ reviewIds }) => {

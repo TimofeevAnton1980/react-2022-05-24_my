@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/hook_ts";
 
 type Props = {
-  id: string;
+  id: string | undefined;
 };
 
 export const ReviewsContainer: React.FC<Props> = ({ id }) => {
@@ -20,9 +20,9 @@ export const ReviewsContainer: React.FC<Props> = ({ id }) => {
   const isReviewsLoading = useAppSelector(selectIsReviewsLoading);
   const isReviewsFailed = useAppSelector(selectIsReviewsFailed);
   const reviewIds = useAppSelector((state) =>
-    selectRestaurantReviewsById(state, { id })
+    selectRestaurantReviewsById(state, {payload: {id}, type: "restaurant/successLoading"})
   );
-
+  console.log(reviewIds);
   useEffect(() => {
     dispatch<any>(loadUsersIfNotExist());
   }, []);

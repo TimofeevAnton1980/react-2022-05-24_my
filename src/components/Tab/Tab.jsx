@@ -1,15 +1,11 @@
 import React from "react";
 import classnames from "classnames";
+import PropTypes from "prop-types";
 
 import styles from "./styles.module.css";
 import { NavLink } from "react-router-dom";
 
-interface Interface {
-  to: string | undefined;
-  title: string | undefined;
-  className?: {};
-}
-export const Tab: React.FC<Interface> = ({ to, title, className }) => {
+export const Tab = ({ to, title, className }) => {
   // console.log(date(id));
   return (
     <NavLink

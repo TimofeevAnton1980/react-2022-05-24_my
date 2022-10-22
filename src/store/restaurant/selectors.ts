@@ -3,6 +3,8 @@ import { createSelector } from "reselect";
 import { Review } from "../review";
 import { RootState } from "../store";
 import { RestaurantInterface } from "./index";
+import {Product} from "../product";
+import {PayloadAction} from "@reduxjs/toolkit";
 
 export const selectRestaurantState = (state: RootState) => state.restaurant;
 
@@ -12,8 +14,8 @@ export const selectIsLoading = (state: RootState) =>
   selectRestaurantState(state).status === "loading";
 export const selectIsFailed = (state: RootState) =>
   selectRestaurantState(state).status === "failed";
-export const selectRestaurantById = (state: RootState, id: string) =>
-  selectRestaurantState(state).entities[id];
+export const selectRestaurantById = (state: RootState, id: string | undefined) =>
+  selectRestaurantState(state).entities[id || ""];
 export const selectRestaurants = (state: RootState) =>
   Object.values(selectRestaurantState(state).entities);
 
@@ -44,13 +46,13 @@ export const selectRestaurantRating = createSelector(
 
 export const selectRestaurantReviewsById = (
   state: RootState,
-  payload: { id: string }
-) => selectRestaurantState(state)?.entities[payload.id]?.reviews || [];
+  action: PayloadAction<{id: string | undefined}, "restaurant/successLoading">
+) => selectRestaurantState(state)?.entities[action.payload.id || ""]?.reviews || [];
 
 export const selectRestaurantProductsById = (
-  state: RootState,
-  payload: { id: string | undefined }
-) => selectRestaurantState(state)?.entities[payload.id]?.menu || [];
+    state: RootState,
+    action: PayloadAction<{id: string | undefined}, "restaurant/successLoading">
+) =>selectRestaurantState(state)?.entities[action.payload.id || ""]?.menu || [];
 
 export const selectAllRestaurantProducts = (state: RootState) => {
   let arrays = Object.values(selectRestaurantState(state).entities).map(
@@ -68,7 +70,7 @@ export const selectRestaurantIdsFilteredByName = (state: RootState) =>
   selectRestaurantState(state).ids;
 export const selectRestaurantNameById = (
   state: RootState,
-  restaurantId: string
+  restaurantId: string | undefined
 ) => selectRestaurantById(state, restaurantId).name;
 
 // const selectorTest = () => {
