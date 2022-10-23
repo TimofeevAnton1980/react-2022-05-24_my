@@ -14,6 +14,7 @@ const ProductContainer: React.FC<ProductContainerProps> = ({
   productId,
   className,
 }) => {
+  // console.log(productId);
   const { productName, productCount } = useProductWithCount(productId);
 
   const dispatch = useAppDispatch();
@@ -23,7 +24,7 @@ const ProductContainer: React.FC<ProductContainerProps> = ({
     [productId]
   );
   const onAddProduct = useCallback(
-    () => dispatch(basketSlice.actions.add({ productId })),
+    () => dispatch<any>(basketSlice.actions.add({ productId })),
     [productId]
   );
 

@@ -16,8 +16,8 @@ export const selectIsFailed = (state: RootState) =>
   selectRestaurantState(state).status === "failed";
 export const selectRestaurantById = (
   state: RootState,
-  id: string | undefined
-) => selectRestaurantState(state).entities[id || ""];
+  restaurantId: string | undefined
+) => selectRestaurantState(state).entities[restaurantId || ""];
 export const selectRestaurants = (state: RootState) =>
   Object.values(selectRestaurantState(state).entities);
 
@@ -48,13 +48,15 @@ export const selectRestaurantRating = createSelector(
 
 export const selectRestaurantReviewsById = (
   state: RootState,
-  id: string | undefined
-) => selectRestaurantState(state)?.entities[id || ""]?.reviews || [];
+  restaurantId: string | undefined
+) => selectRestaurantState(state)?.entities[restaurantId || ""]?.reviews || [];
 
 export const selectRestaurantProductsById = (
   state: RootState,
-  payload: { id: string | undefined }
-) => selectRestaurantState(state)?.entities[payload.id || ""]?.menu || [];
+  payload: { restaurantId: string | undefined }
+) =>
+  selectRestaurantState(state)?.entities[payload.restaurantId || ""]?.menu ||
+  [];
 
 export const selectAllRestaurantProducts = (state: RootState) => {
   let arrays = Object.values(selectRestaurantState(state).entities).map(

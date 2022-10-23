@@ -4,12 +4,12 @@ import classnames from "classnames";
 import styles from "./styles.module.css";
 
 type ProductProps = {
-  name: string,
-  productCount: number,
-  removeProduct: (e: React.MouseEvent) => void,
-  addProduct: (e: React.MouseEvent) => void,
-  className: string
-}
+  name: string;
+  productCount: number;
+  removeProduct: (e: React.MouseEvent) => number;
+  addProduct: (e: React.MouseEvent) => number;
+  className: string;
+};
 export const Product: React.FC<ProductProps> = ({
   name,
   productCount,

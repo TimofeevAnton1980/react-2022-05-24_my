@@ -19,7 +19,7 @@ const ProductContainer = () => {
   const dispatch = useAppDispatch();
   const { id: productId } = useParams();
   const product = useAppSelector((state) =>
-    selectProductById(state, productId || "")
+    selectProductById(state, productId)
   );
   console.log(product);
   useEffect(() => {
