@@ -8,7 +8,7 @@ export function loadProductsIfNotExist(id: string | undefined) {
   return function (dispatch = useAppDispatch(), getState: () => RootState) {
     // const dispatch = useAppDispatch();
     const productIds = selectProductIds(getState());
-    const restaurantProducts = selectRestaurantProductsById(getState(), id);
+    const restaurantProducts = selectRestaurantProductsById(getState(), { id });
 
     if (
       restaurantProducts.every((productId) => productIds.includes(productId))

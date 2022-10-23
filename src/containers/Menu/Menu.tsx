@@ -16,13 +16,13 @@ export const MenuContainer = () => {
   // const params = useParams();
   // console.log(params.id);
 
-  let id = restaurantId;
+  const id = restaurantId;
   console.log(id);
   const dispatch = useAppDispatch();
   const isProductsLoading = useAppSelector(selectIsProductsLoading);
   const isProductsFailed = useAppSelector(selectIsProductsFailed);
   const productIds = useAppSelector((state) =>
-    selectRestaurantProductsById(state, id)
+    selectRestaurantProductsById(state, { id })
   );
   console.log(productIds);
   useEffect(() => {

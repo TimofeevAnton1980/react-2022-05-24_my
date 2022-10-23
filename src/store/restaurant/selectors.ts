@@ -53,8 +53,8 @@ export const selectRestaurantReviewsById = (
 
 export const selectRestaurantProductsById = (
   state: RootState,
-  id: string | undefined
-) => selectRestaurantState(state)?.entities[id || ""]?.menu || [];
+  payload: { id: string | undefined }
+) => selectRestaurantState(state)?.entities[payload.id || ""]?.menu || [];
 
 export const selectAllRestaurantProducts = (state: RootState) => {
   let arrays = Object.values(selectRestaurantState(state).entities).map(
