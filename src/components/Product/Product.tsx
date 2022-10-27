@@ -2,12 +2,13 @@ import React from "react";
 import classnames from "classnames";
 
 import styles from "./styles.module.css";
+import {BasketActionPayload} from "../../store/basket";
 
 type ProductProps = {
   name: string;
   productCount: number;
-  removeProduct: (e: React.MouseEvent) => number;
-  addProduct: (e: React.MouseEvent) => number;
+  removeProduct: () => any;
+  addProduct: (e: React.MouseEvent<HTMLElement>) => void;
   className: string;
 };
 export const Product: React.FC<ProductProps> = ({
@@ -17,6 +18,7 @@ export const Product: React.FC<ProductProps> = ({
   addProduct,
   className,
 }) => {
+  // console.log(productCount);
   return (
     <div className={classnames(styles.root, className)}>
       <span>{name}</span>

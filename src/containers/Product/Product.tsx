@@ -3,7 +3,7 @@ import { Product } from "../../components/Product/Product";
 import { useDispatch } from "react-redux";
 import useProductWithCount from "../../hooks/useProductWithCount";
 import { useAppDispatch } from "../../hooks/hook_ts";
-import basketSlice from "../../store/basket";
+import basketSlice, {BasketActionPayload} from "../../store/basket";
 
 interface ProductContainerProps {
   productId: string;
@@ -16,7 +16,8 @@ const ProductContainer: React.FC<ProductContainerProps> = ({
 }) => {
   // console.log(productId);
   const { productName, productCount } = useProductWithCount(productId);
-
+  console.log(productName);
+  console.log(productCount);
   const dispatch = useAppDispatch();
 
   const onRemoveProduct = useCallback(

@@ -9,7 +9,6 @@ const useProductWithCount = (productId: string) => {
   const productCount: number = useAppSelector((state) =>
     selectProductCountFromBasket({ state, productId })
   );
-  // console.log(productCount);
   return { productName, productCount };
 };
 

@@ -13,7 +13,7 @@ export const selectProductIds = (state: RootState) =>
 export const selectProductById = (
   state: RootState,
   productId: string | undefined
-): Product => selectProductState(state).entities[productId || ""];
+): Product => {const id = productId; return selectProductState(state).entities[id || ""];}
 
 export const selectProductNameById = ({ state, productId }: ProductProps) =>
   selectProductState(state).entities[productId || ""]?.name;

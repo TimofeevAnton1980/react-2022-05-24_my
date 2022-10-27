@@ -12,8 +12,7 @@ import { useAppDispatch } from "../../../hooks/hook_ts";
 export function loadReviewsIfNotExist(restaurantId: string | undefined) {
   return function (dispatch = useAppDispatch(), getState: () => RootState) {
     const reviewIds = selectReviewIds(getState());
-    const id = restaurantId;
-    const restaurantReviews = selectRestaurantReviewsById(getState(), id);
+    const restaurantReviews = selectRestaurantReviewsById(getState(), {restaurantId});
 
     if (restaurantReviews.every((reviewId) => reviewIds.includes(reviewId))) {
       return;
@@ -22,7 +21,7 @@ export function loadReviewsIfNotExist(restaurantId: string | undefined) {
     dispatch(reviewSlice.actions.startLoading(null));
 
     fetch(
-      `http://localhost:3001/api/reviews?${new URLSearchParams(id).toString()}`
+      `http://localhost:3001/api/reviews?${new URLSearchParams(restaurantId).toString()}`
     )
       .then((response) => response.json())
       .then((reviews) => {

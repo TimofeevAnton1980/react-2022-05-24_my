@@ -16,15 +16,13 @@ export const MenuContainer = () => {
   // const params = useParams();
   // console.log(params.id);
 
-  // const id = restaurantId;
-  // console.log(id);
   const dispatch = useAppDispatch();
   const isProductsLoading = useAppSelector(selectIsProductsLoading);
   const isProductsFailed = useAppSelector(selectIsProductsFailed);
   const productIds = useAppSelector((state) =>
     selectRestaurantProductsById(state, { restaurantId })
   );
-  console.log(productIds);
+  // console.log(productIds);
   useEffect(() => {
     dispatch<any>(loadProductsIfNotExist(restaurantId));
   }, [restaurantId]);

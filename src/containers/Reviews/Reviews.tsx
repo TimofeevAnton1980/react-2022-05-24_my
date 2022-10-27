@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { Reviews } from "../../components/Reviews/component";
 import {
@@ -11,18 +10,19 @@ import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/hook_ts";
 
 type Props = {
-  id: string | undefined;
+  restaurantId: string | undefined;
 };
 
-export const ReviewsContainer: React.FC<Props> = ({ id }) => {
+export const ReviewsContainer: React.FC<Props> = ({ restaurantId }) => {
   // const {restaurantId} = useParams();
   const dispatch = useAppDispatch();
   const isReviewsLoading = useAppSelector(selectIsReviewsLoading);
   const isReviewsFailed = useAppSelector(selectIsReviewsFailed);
+  // console.log(restaurantId);
   const reviewIds = useAppSelector((state) =>
-    selectRestaurantReviewsById(state, id)
+    selectRestaurantReviewsById(state, {restaurantId})
   );
-  console.log(reviewIds);
+  // console.log(reviewIds);
   useEffect(() => {
     dispatch<any>(loadUsersIfNotExist());
   }, []);
