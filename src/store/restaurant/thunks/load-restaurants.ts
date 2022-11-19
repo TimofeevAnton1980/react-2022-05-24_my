@@ -2,9 +2,10 @@ import restaurantSlice from "../index";
 import { selectRestaurantIds } from "../selectors";
 import { RootState } from "../../store";
 import { useAppDispatch } from "../../../hooks/hook_ts";
+import {Dispatch} from "redux";
 
 export function loadRestaurantsIfNotExist() {
-  return function (dispatch = useAppDispatch(), getState: () => RootState) {
+  return function (dispatch: Dispatch, getState: () => RootState) {
     if (selectRestaurantIds(getState())?.length > 0) {
       console.log("already loaded");
 
