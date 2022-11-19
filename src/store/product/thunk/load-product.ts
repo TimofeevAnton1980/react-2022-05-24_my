@@ -3,9 +3,10 @@ import productSlice from "../index";
 import { selectRestaurantProductsById } from "../../restaurant/selectors";
 import { useAppDispatch } from "../../../hooks/hook_ts";
 import { RootState } from "../../store";
+import { Dispatch } from "redux";
 
 export function loadProductsIfNotExist(restaurantId: string | undefined) {
-  return function (dispatch = useAppDispatch(), getState: () => RootState) {
+  return function (dispatch: Dispatch, getState: () => RootState) {
     // const dispatch = useAppDispatch();
     const productIds = selectProductIds(getState());
     const restaurantProducts = selectRestaurantProductsById(getState(), {

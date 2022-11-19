@@ -7,9 +7,10 @@ import {
 } from "../../restaurant/selectors";
 import { useAppDispatch } from "../../../hooks/hook_ts";
 import { RootState } from "../../store";
+import { Dispatch } from "redux";
 
 export function loadProducts() {
-  return function (dispatch = useAppDispatch(), getState: () => RootState) {
+  return function (dispatch: Dispatch, getState: () => RootState) {
     const productIds = selectProductIds(getState());
     // console.log(productIds);
     const restaurantProducts = selectAllRestaurantProducts(getState());

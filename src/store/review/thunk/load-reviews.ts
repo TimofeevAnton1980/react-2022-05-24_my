@@ -10,9 +10,11 @@ import { useAppDispatch } from "../../../hooks/hook_ts";
 
 // ThunkAction<void, RootState, unknown, PayloadAction<Review[] | null | {}>>
 export function loadReviewsIfNotExist(restaurantId: string | undefined) {
-  return function (dispatch = useAppDispatch(), getState: () => RootState) {
+  return function (dispatch: Dispatch, getState: () => RootState) {
     const reviewIds = selectReviewIds(getState());
-    const restaurantReviews = selectRestaurantReviewsById(getState(), {restaurantId});
+    const restaurantReviews = selectRestaurantReviewsById(getState(), {
+      restaurantId,
+    });
 
     if (restaurantReviews.every((reviewId) => reviewIds.includes(reviewId))) {
       return;
@@ -21,7 +23,9 @@ export function loadReviewsIfNotExist(restaurantId: string | undefined) {
     dispatch(reviewSlice.actions.startLoading(null));
 
     fetch(
-      `http://localhost:3001/api/reviews?${new URLSearchParams(restaurantId).toString()}`
+      `http://localhost:3001/api/reviews?${new URLSearchParams(
+        restaurantId
+      ).toString()}`
     )
       .then((response) => response.json())
       .then((reviews) => {
