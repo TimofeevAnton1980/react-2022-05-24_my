@@ -7,6 +7,13 @@
 .title {
   margin: 20px 0 5px;
 }
+.name {
+  width: 573px;
+}
+.text {
+  width: 573px;
+  height: 61px;
+}
 .submitButton {
   height: 40px;
   width: 165px;

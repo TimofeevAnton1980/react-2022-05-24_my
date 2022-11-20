@@ -54,6 +54,7 @@ export const NewReviewForm = () => {
       <h3>New Review</h3>
       <span className={styles.title}>Name</span>
       <input
+        className={styles.name}
         placeholder="Default name"
         // value={state.name}
         onChange={(event) => {
@@ -66,6 +67,7 @@ export const NewReviewForm = () => {
 
       <span className={styles.title}>Text</span>
       <input
+        className={styles.text}
         placeholder="Default text"
         // value={state.text}
         onChange={(event) => {
