@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {BasketActionPayload, BasketState} from "../basket";
 
 export type ReviewState = {
   entities: Record<string, Review>;
@@ -42,6 +43,17 @@ const reviewSlice = createSlice({
       state.ids = [...state.ids, ...(action.payload || []).map(({ id }) => id)];
 
       state.status = "success";
+    },
+    addReview: (state: ReviewState, action: PayloadAction<Review>) => {
+      const reviewNew = action.payload;
+      console.log(reviewNew);
+      // if (!reviewNew) {
+      //   return state;
+      // }
+      state.entities = { ...state.entities, reviewNew};
+      state.ids = [...state.ids, action.payload.id];
+      state.status = "success";
+      return state;
     },
   },
 });

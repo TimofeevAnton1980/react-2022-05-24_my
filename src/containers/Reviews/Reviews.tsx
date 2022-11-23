@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import { Reviews } from "../../components/Reviews/component";
 import {
   selectIsReviewsFailed,
@@ -8,6 +8,9 @@ import { loadUsersIfNotExist } from "../../store/user/thunks/load-users";
 import { selectRestaurantReviewsById } from "../../store/restaurant/selectors";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/hook_ts";
+import basketSlice from "../../store/basket";
+import reviewSlice, {Review} from "../../store/review";
+import {ReviewAdd} from "../ReviewAdd/ReviewAdd";
 
 type Props = {
   restaurantId: string | undefined;
@@ -22,7 +25,17 @@ export const ReviewsContainer: React.FC<Props> = ({ restaurantId }) => {
   const reviewIds = useAppSelector((state) =>
     selectRestaurantReviewsById(state, {restaurantId})
   );
+  // const [{NewReview}, setNewReview] = useState('');
+ //  const New = useCallback(
+ // (NewReview: Review) => dispatch<any>(reviewSlice.actions.addReview(NewReview)), []);
+  // const addReview = (NewReview: Review) => setNewReview(NewReview);
+  // const New = useCallback(
+  //     () => dispatch<any>(reviewSlice.actions.addReview(addNewReview)),
+  //     [addNewReview]
+  // );
+
   // console.log(reviewIds);
+
   useEffect(() => {
     dispatch<any>(loadUsersIfNotExist());
   }, []);
@@ -35,6 +48,8 @@ export const ReviewsContainer: React.FC<Props> = ({ restaurantId }) => {
     <span>Loading</span>
   ) : (
     // <Reviews reviewIds={reviewIds} {...props} />
-    <Reviews reviewIds={reviewIds} />
+    //   <Reviews reviewIds={reviewIds} addNewReview={New}/>
+      <ReviewAdd reviewIds={reviewIds} restaurantId={restaurantId}/>
+
   );
 };
