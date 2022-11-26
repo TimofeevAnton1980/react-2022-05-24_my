@@ -1,7 +1,7 @@
 import React from "react";
 import {createArray} from "../../constants/lib";
 import Star from "./Star";
-import styles from "../NewReviewForm/styles.module.css";
+import styles from "./styles.module.css";
 
 export default function StarRating({
                                        totalStars = 5,

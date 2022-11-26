@@ -8,7 +8,7 @@ export type RestaurantState = {
 };
 
 export interface RestaurantInterface {
-  id: string | undefined;
+  id?: string;
   name: string;
   menu: string[];
   reviews: string[];

@@ -9,6 +9,7 @@ type ProductDetailsProps = {
 }
 export const ProductDetails: React.FC<ProductDetailsProps> = ({ name, price, ingredients }) => {
   return (
+      <div className={styles.mainWrapper}>
     <div className={classnames(styles.root)}>
       <div className={classnames(styles.ingredient)}>{name}</div>
       <div className={classnames(styles.ingredient)}>price: {price}</div>
@@ -20,5 +21,6 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ name, price, ing
         ))}
       </ul>
     </div>
+      </div>
   );
 };

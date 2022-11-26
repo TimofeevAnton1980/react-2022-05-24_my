@@ -8,8 +8,9 @@ type Props = {
     // className: string
 }
 const Basket = (props: Props) => (
+    <div className={classnames(styles.mainWrapper)}>
   <div className={classnames(styles.root)}>
-    <h2>Basket</h2>
+    <h2 className={classnames(styles.title)}>Basket</h2>
     {props.productIds?.length > 0 &&
     props.productIds.map((productId) => (
         <BasketItemContainer
@@ -19,6 +20,7 @@ const Basket = (props: Props) => (
         />
       ))}
   </div>
+    </div>
 );
 
 export default Basket;

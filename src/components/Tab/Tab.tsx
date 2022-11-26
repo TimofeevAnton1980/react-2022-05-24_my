@@ -5,8 +5,8 @@ import styles from "./styles.module.css";
 import { NavLink } from "react-router-dom";
 
 interface Interface {
-  to: string | undefined;
-  title: string | undefined;
+  to?: string;
+  title?: string;
   className?: {};
 }
 export const Tab: React.FC<Interface> = ({ to, title, className }) => {

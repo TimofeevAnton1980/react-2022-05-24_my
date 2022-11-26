@@ -7,6 +7,7 @@ interface MenuInterface {
   productIds: string[];
 }
 const Menu: React.FC<MenuInterface> = ({ productIds }) => (
+    <div className={classnames(styles.mainWrapper)}>
   <div className={classnames(styles.root)}>
     <span className={styles.menuTitle}>Menu</span>
     {productIds?.map((productId) => (
@@ -17,6 +18,7 @@ const Menu: React.FC<MenuInterface> = ({ productIds }) => (
       />
     ))}
   </div>
+    </div>
 );
 
 export default React.memo(Menu);

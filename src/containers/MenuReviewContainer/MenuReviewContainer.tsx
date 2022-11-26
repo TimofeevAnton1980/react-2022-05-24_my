@@ -13,7 +13,7 @@ export const MenuReviewContainer = ({}) => {
   // };
   return (
     <Tabs
-      renderTab={(id: string | undefined) => (
+      renderTab={(id?: string) => (
         <MenuReviewTabContainer
           key={id}
           restaurantId={restaurantId}

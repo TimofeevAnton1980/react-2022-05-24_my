@@ -25,16 +25,6 @@ export const ReviewsContainer: React.FC<Props> = ({ restaurantId }) => {
   const reviewIds = useAppSelector((state) =>
     selectRestaurantReviewsById(state, {restaurantId})
   );
-  // const [{NewReview}, setNewReview] = useState('');
- //  const New = useCallback(
- // (NewReview: Review) => dispatch<any>(reviewSlice.actions.addReview(NewReview)), []);
-  // const addReview = (NewReview: Review) => setNewReview(NewReview);
-  // const New = useCallback(
-  //     () => dispatch<any>(reviewSlice.actions.addReview(addNewReview)),
-  //     [addNewReview]
-  // );
-
-  // console.log(reviewIds);
 
   useEffect(() => {
     dispatch<any>(loadUsersIfNotExist());

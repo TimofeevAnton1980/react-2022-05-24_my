@@ -45,12 +45,14 @@ const reviewSlice = createSlice({
       state.status = "success";
     },
     addReview: (state: ReviewState, action: PayloadAction<Review>) => {
+      const s: Acc = {};
       const reviewNew = action.payload;
-      console.log(reviewNew);
+      s[reviewNew.id] = reviewNew;
+          console.log(s);
       // if (!reviewNew) {
       //   return state;
       // }
-      state.entities = { ...state.entities, reviewNew};
+      state.entities = { ...state.entities, ...s};
       state.ids = [...state.ids, action.payload.id];
       state.status = "success";
       return state;

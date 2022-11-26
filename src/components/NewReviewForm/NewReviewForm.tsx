@@ -3,6 +3,7 @@ import { useReducer } from "react";
 import React from "react";
 import {Review} from "../../store/review";
 import StarRating from "../StarRating/StarRating";
+import {User} from "../../store/user";
 
 enum CountActionKind {
   changeName = "changeName",
@@ -44,11 +45,11 @@ const reducer = (state: CountState, action: CountAction) => {
   }
 };
 interface NewReviewFormProps {
-    onAdd: (f: Review) => Review;
+    onAdd:  (f: { NewReview: Review, NewUser: User }) => { NewReview: Review, NewUser: User };
     reviewIds: (string | undefined)[];
 
 }
-export const NewReviewForm: React.FC<NewReviewFormProps> = ({onAdd = (f: Review) => f, reviewIds}) => {
+export const NewReviewForm: React.FC<NewReviewFormProps> = ({onAdd = (f) => f, reviewIds}) => {
   const [state, dispatch] = useReducer(reducer, {
     name: "Default name",
     text: "",
@@ -56,13 +57,18 @@ export const NewReviewForm: React.FC<NewReviewFormProps> = ({onAdd = (f: Review)
   });
   const NewReview: Review = {
     id: (reviewIds.length + 1).toString(),
-    userId: state.name,
+    userId: (reviewIds.length + 1).toString(),
     text: state.text,
     rating: state.rating,
-}
+    };
+    const NewUser: User = {
+        id: (reviewIds.length + 1).toString(),
+        name: state.name,
+    }
+
   return (
     <div className={styles.root}>
-      <h3>New Review</h3>
+      <h3 style={{margin: "0 0"}}>New Review</h3>
       <span className={styles.title}>Name</span>
       <input
         className={styles.name}
@@ -77,17 +83,19 @@ export const NewReviewForm: React.FC<NewReviewFormProps> = ({onAdd = (f: Review)
       />
 
       <span className={styles.title}>Text</span>
-      <input
-        className={styles.text}
-        placeholder="Default text"
-        // value={state.text}
-        onChange={(event) => {
-          dispatch({
-            type: CountActionKind.changeText,
-            payload: event.target.value,
-          });
-        }}
-      />
+        <textarea
+            className={styles.text}
+            placeholder="Default text"
+            // value={state.text}
+            onChange={(event) => {
+                dispatch({
+                    type: CountActionKind.changeText,
+                    payload: event.target.value,
+                });
+            }}
+        >
+
+        </textarea>
 
       <span className={styles.title}>Rating</span>
       {/*<input*/}
@@ -113,7 +121,7 @@ export const NewReviewForm: React.FC<NewReviewFormProps> = ({onAdd = (f: Review)
             }}
         />
 
-      <button type="submit" onClick={() => onAdd(NewReview)} className={styles.submitButton}>
+      <button type="submit" onClick={() => onAdd({NewReview, NewUser})} className={styles.submitButton}>
         PUBLISH REVIEW
       </button>
     </div>

@@ -16,6 +16,7 @@ export const Products: React.FC<ProductsProps> = ({ products }) => {
   // );
     console.log(products);
   return (
+      <div className={styles.mainWrapper}>
     <div className={classnames(styles.root)}>
       {products?.map(({ id, name }) => (
         <Link className={styles.product} key={id} to={`/product/${id}`}>
@@ -23,5 +24,6 @@ export const Products: React.FC<ProductsProps> = ({ products }) => {
         </Link>
       ))}
     </div>
+      </div>
   );
 };

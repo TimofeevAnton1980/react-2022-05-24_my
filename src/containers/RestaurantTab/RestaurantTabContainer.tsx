@@ -6,7 +6,7 @@ import {RootState} from "../../store/store";
 import {useAppSelector} from "../../hooks/hook_ts";
 
 interface Interface {
-  restaurantId: string | undefined,
+  restaurantId?: string,
   className?: string
 }
 export const RestaurantTabContainer: React.FC<Interface> = ({ restaurantId, className }) => {

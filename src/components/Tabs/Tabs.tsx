@@ -4,7 +4,7 @@ import classnames from "classnames";
 
 interface Interface {
   tabIds: (string | undefined)[];
-  renderTab: (id: string | undefined, className?: string) => JSX.Element;
+  renderTab: (id?: string, className?: string) => JSX.Element;
   className?: {};
 }
 

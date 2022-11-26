@@ -14,6 +14,7 @@ const ReviewContainer: React.FC<ReviewContainerProps> = ({ reviewId }) => {
   if (!review) {
     return null;
   }
+  console.log(review);
   // const reviewNew = useAppSelector((state) => selectReviewById(state, reviewId));
   const { text, rating, userId } = review;
   return <MemoReview text={text} rating={rating} userId={userId} />;

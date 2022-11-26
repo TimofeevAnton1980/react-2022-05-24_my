@@ -1,6 +1,12 @@
+.mainWrapper {
+  display: block;
+}
 .root {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  max-width: 908px;
+  padding-top: 20px;
 }
 .product {
   padding: 20px 25px;

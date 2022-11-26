@@ -25,7 +25,7 @@ export const RestaurantTabsContainer = ({}) => {
 
   return (
     <Tabs
-      renderTab={(id: string | undefined, className?: string) => (
+      renderTab={(id?: string, className?: string) => (
         <RestaurantTabContainer
           key={id}
           restaurantId={id}

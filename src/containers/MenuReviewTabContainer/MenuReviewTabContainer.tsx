@@ -2,7 +2,7 @@ import React from "react";
 import { Tab } from "../../components/Tab/Tab";
 
 interface Interface {
-     restaurantId: string | undefined, className?: {}, name: string | undefined
+     restaurantId?: string, className?: {}, name?: string
 }
 export const MenuReviewTabContainer = ({ restaurantId, className, name }: Interface) => {
 

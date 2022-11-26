@@ -1,7 +1,11 @@
+.mainWrapper {
+  display: block;
+}
 .root {
   display: flex;
   flex-direction: column;
-  padding: 20px 25px;
+  margin: 20px auto;
+  max-width: 908px;
 }
 .ingredient {
   padding: 20px 25px;
