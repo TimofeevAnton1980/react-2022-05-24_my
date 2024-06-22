@@ -8,12 +8,8 @@ import React from "react";
 
 export type ValueProps = {
   value: number;
-  size?: string;
+  size?: "medium" | "small";
 };
-
-// export interface Style {
-//     size: string;
-// }
 
 export const Rating = ({ value, size = "medium" }: ValueProps) => {
   return (
